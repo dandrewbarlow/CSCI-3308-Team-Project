@@ -1,0 +1,4 @@
+# Ignore all .doc and .docx
+*.doc
+*.docx
+*.tmp
