@@ -9,3 +9,15 @@ The end goal of this project is a simple home server that requires minimal setup
 - [Jared Cantilina](https://github.com/JaredTCan)
 - [Meghan Donohoe](https://github.com/medo5682)
 - [Aparajithan Venkateswaran](https://github.com/AparaV)
+
+## How To's
+
+* SSH
+```shell
+$ ssh username@ip
+```
+`ip: 73.229.199.171`
+Default username is `pi`. Get password from one of the admins (team members). If you are an admin, you should use your own username. Obtain it from [Jared](https://github.com/JaredTCan).
+
+## Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md)
