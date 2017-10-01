@@ -21,3 +21,6 @@ Default username is `pi`. Get password from one of the admins (team members). If
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## License
+Licensed under MIT. See [LICENSE](LICENSE) for more details.
