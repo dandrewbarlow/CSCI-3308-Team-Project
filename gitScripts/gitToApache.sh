@@ -8,12 +8,23 @@
 #  Jared Cantilina
 #
 
+echo "Pulling data from git"
 cd /home/pi/Pi-in-the-Sky/
 git pull
+
+echo "Tarring git repo"
 cd /home/pi/Pi-in-the-Sky/documentRoot/
 tar -cvf documentRoot.tar .
+
+echo "cleaning documentroot"
 cd /usr/local/apache/htdocs/
 rm -rf * 
+
+echo "Unpacking"
 mv /home/pi/Pi-in-the-Sky/documentRoot/documentRoot.tar ./
 tar -xvf documentRoot.tar
 
+echo "Cleaning up"
+rm documentRoot.tar
+
+echo "done!"
