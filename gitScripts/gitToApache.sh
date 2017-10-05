@@ -10,7 +10,16 @@
 
 echo "Pulling data from git"
 cd /home/pi/Pi-in-the-Sky/
-git pull | grep "Already up-to-date." && exit 0
+git pull 
+
+echo "checking for changes"
+DIFF=$(diff -r /home/pi/Pi-in-the-Sky/documentRoot/ /usr/local/apache/htdocs/)
+if [ "$DIFF" == "" ]
+then
+	echo "no changes"
+	exit 0
+fi
+
 
 echo "Tarring git repo"
 cd /home/pi/Pi-in-the-Sky/documentRoot/
