@@ -5,4 +5,4 @@ echo ""
 echo ""
 cd /home/pi/Pi-in-the-Sky/
 
-git branch
+git branch | grep '*'
