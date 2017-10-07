@@ -13,7 +13,7 @@ BRANCHEXISTS=`echo $BRANCHES | grep $TOBRANCH`
 if [ "$BRANCHEXISTS" != "" ]
 then
 	echo "$TOBRANCH" > /var/local/switchBranch.txt 
-	echo "Success!!"
+	echo "Success!! Your branch will be switched to within 5 minutes"
 else
 	echo "Not a valid branch"
 fi
