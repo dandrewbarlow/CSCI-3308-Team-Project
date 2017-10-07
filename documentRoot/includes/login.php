@@ -1,17 +1,16 @@
 <?php
 session_start();
 
-$dbServerName = "73.229.199.171";
+$dbServerName = "localhost";
 $dbUsername = "root";
 $dbPassword = "PiInTheSky";
 $dbName = "piServer";
 
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
-if (mysqli_connect_errno())
-  {
+if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
+}
 
 $message = "";
 
