@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
 			$message = "Successfully authenticated";
 			$_SESSION['username'] = $uid;
 			$_SESSION['success'] = "You are now logged in";
-			header('Location: home.php')
+			header('Location: home.php');
 		}
 	}
 }
