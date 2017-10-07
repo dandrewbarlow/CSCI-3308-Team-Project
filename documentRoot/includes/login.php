@@ -14,7 +14,7 @@ if (mysqli_connect_errno()) {
 
 $message = "";
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['login'])) {
 
 	$uid = mysqli_real_escape_string($conn, $_POST['username']);
 	$pwd = mysqli_real_escape_string($conn, $_POST['password']);
