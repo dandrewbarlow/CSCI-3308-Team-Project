@@ -4,9 +4,9 @@ create table if not exists users (
 	user_email varchar(255) not null,
 	user_uid varchar(255) not null,
 	psswd varchar(255) not null,
-	primary key(id)
+	primary key(user_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=7;
 
-insert into users (user_id, user_name, user_email, user_id, psswd)
+insert into users (user_id, user_name, user_email, user_uid, psswd)
 	values
 	(1, 'Admin', 'apve4733@colorado.edu', 'pi', 'PiInTheSky');
