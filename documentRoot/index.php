@@ -2,12 +2,26 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Pi In The Sky</title>
+		<title>Login | Pi In The Sky</title>
+		<link rel="stylesheet" href="/css/style.css">
 	</head>
 	<body>
-		<h1>Pi In The Sky</h1>
-		<p>Pi in the Sky homepage</p>
-		<p>This line means that the website is properly pulling content from github</p>
-		<p>This line is for testing a cleaner script</p>
+		<div class="header">
+			<h1>Pi In the Sky</h1>
+		</div>
+		<div class="extra-space"></div>
+		<div class="login-form">
+			<h2>Login</h2>
+			<form class="login" action="index.php" method="post">
+				<div class="input-group">
+					<label>Username</label>&nbsp;
+					<input type="text" name="username" value="">
+				</div>
+				<div class="input-group">
+					<label>Password</label>&nbsp;
+					<input type="password" name="password" value="">
+				</div>
+			</form>
+		</div>
 	</body>
 </html>
