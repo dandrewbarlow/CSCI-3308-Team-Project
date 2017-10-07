@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 #  Script to automatically pull website from github repo.
-#  Works by pulling from the git repo to a local repo, 
+#  Works by pulling from the git repo to a local repo,
 #  then using tar to replace the contents of a directory
 #  to the document root
 #
@@ -10,7 +10,7 @@
 
 echo "Pulling data from git"
 cd /home/pi/Pi-in-the-Sky/
-git pull 
+git pull
 
 echo "checking for changes in documentRoot"
 DIFF=$(diff -r /home/pi/Pi-in-the-Sky/documentRoot/ /usr/local/apache/htdocs/)
@@ -25,16 +25,19 @@ else
 
 	echo "cleaning apache/htdocs"
 	cd /usr/local/apache/htdocs/
-	rm -rf * 
+	rm -rf *
 
 	echo "Unpacking"
 	mv /home/pi/Pi-in-the-Sky/documentRoot/documentRoot.tar ./
 	tar -xvf documentRoot.tar
 
+	echo "Copying .htaccess"
+	cp ../htaccess/.htaccess ./
+
 	echo "Cleaning up"
 	rm documentRoot.tar
 fi
-  
+
 echo "checking for changes in cgi-bin"
 DIFF=$(diff -r /home/pi/Pi-in-the-Sky/cgi-bin/ /usr/local/apache/cgi-bin/)
 if [ "$DIFF" == "" ]
@@ -47,7 +50,7 @@ else
 
 	echo "cleaning apache/cgi-bin"
 	cd /usr/local/apache/cgi-bin/
-	rm -rf * 
+	rm -rf *
 
 	echo "Unpacking"
 	mv /home/pi/Pi-in-the-Sky/cgi-bin/cgi-bin.tar ./
