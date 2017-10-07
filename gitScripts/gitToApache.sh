@@ -28,7 +28,7 @@ then
 	echo "no changes"
 
 else
-	echo"Tarring git/documentRoot"
+	echo "Tarring git/documentRoot"
 	cd /home/pi/Pi-in-the-Sky/documentRoot/
 	tar -cvf documentRoot.tar .
 
