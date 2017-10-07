@@ -1,3 +1,4 @@
+<?php include('includes/login.php') ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,5 +27,12 @@
 				</div>
 			</form>
 		</div>
+		<p>
+			<?php
+				if ($message != ""){
+					echo $message;
+				}
+			 ?>
+		</p>
 	</body>
 </html>
