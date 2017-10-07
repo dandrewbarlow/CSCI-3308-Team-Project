@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+echo "Content-type: text/html\n\n"
+git fetch
+BRANCHES=`git branch`
+TOBRANCH=$QUERY_STRING
+
+BRANCHEXISTS=`echo $BRANCHES | grep $TOBRANCH`
+
+if [ BRANCHEXISTS != "" ]
+then
+	echo "Success!!"
+else
+	echo "<p>Not a valid Branch</p>"
+fi
