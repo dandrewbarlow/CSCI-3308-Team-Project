@@ -12,6 +12,7 @@ BRANCHEXISTS=`echo $BRANCHES | grep $TOBRANCH`
 
 if [ "$BRANCHEXISTS" != "" ]
 then
+	git checkout $TOBRANCH
 	echo "Success!!"
 else
 	echo "Not a valid branch"
