@@ -10,7 +10,7 @@ TOBRANCH=$QUERY_STRING
 
 BRANCHEXISTS=`echo $BRANCHES | grep $TOBRANCH`
 
-if [ BRANCHEXISTS != "" ]
+if [ "$BRANCHEXISTS" != "" ]
 then
 	echo $BRANCHEXISTS 
 else
