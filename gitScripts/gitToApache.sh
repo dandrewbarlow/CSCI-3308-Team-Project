@@ -8,8 +8,17 @@
 #  Jared Cantilina
 #
 
-echo "Pulling data from git"
+echo "checking for branch change request"
+BRANCHFILE=/var/local/switchBranch.txt
 cd /home/pi/Pi-in-the-Sky/
+if [ -e $BRANCHFILE ]
+then
+	echo "Branch change requested"
+	git checkout $(cat $BRANCHFILE)
+	rm $BRANCHFILE
+fi
+
+echo "Pulling data from git"
 git pull 
 
 echo "checking for changes in documentRoot"
