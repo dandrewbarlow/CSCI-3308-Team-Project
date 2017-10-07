@@ -36,6 +36,22 @@ body {
 	padding: 40px;
 }
 
+.btn {
+	border: 0 !important;
+	padding: 10px 25px 10px 25px;
+	background-color: #67909E;
+	-webkit-appearance: none;
+	font-size: inherit;
+	border-radius: 5px;
+}
+
+.btn:hover {
+	background-color: #49A9FF;
+	color: #ffffff;
+	cursor: hand;
+	cursor: pointer;
+}
+
 /* Mobile Screen Responsiveness */
 @media only screen and (max-width : 500px) {
     .login-form {
