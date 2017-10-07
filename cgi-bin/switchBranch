@@ -12,7 +12,7 @@ BRANCHEXISTS=`echo $BRANCHES | grep $TOBRANCH`
 
 if [ "$BRANCHEXISTS" != "" ]
 then
-	echo $BRANCHEXISTS 
-else
 	echo "Success!!"
+else
+	echo "Not a valid branch"
 fi
