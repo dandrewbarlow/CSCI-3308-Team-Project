@@ -37,6 +37,8 @@ fi
   
 echo "checking for changes in cgi-bin"
 DIFF=$(diff -r /home/pi/Pi-in-the-Sky/cgi-bin/ /usr/local/apache/cgi-bin/)
+
+echo $DIFF
 if [ "$DIFF" == "" ]
 then
 	echo "no changes"
