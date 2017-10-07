@@ -1,7 +1,9 @@
 #!/bin/bash
 
 
-echo "Content-type: text/html\n\n"
+echo "Content-type: text/html"
+echo ""
+cd /home/pi/Pi-in-the-Sky/
 git fetch
 BRANCHES=`git branch`
 TOBRANCH=$QUERY_STRING
