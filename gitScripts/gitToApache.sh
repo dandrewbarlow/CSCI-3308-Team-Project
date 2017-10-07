@@ -14,8 +14,8 @@ cd /home/pi/Pi-in-the-Sky/
 if [ -e $BRANCHFILE ]
 then
 	echo "Branch change requested"
-	git checkout $(cat $BRANCHFILE)
-	rm $BRANCHFILE
+	git checkout $(cat $BRANCHFILE) && rm -f $BRANCHFILE
+	exit 0 #since git checkout will call this script, we don't need to do the rest.
 fi
 
 echo "Pulling data from git"
