@@ -6,25 +6,23 @@ $dbUsername = "root";
 $dbPassword = "PiInTheSky";
 $dbName = "piServer";
 
-$conn = mysql_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
-if (mysql_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysql_connect_error();
-    echo '<script>console.log("Failed to connect")</script>';
+if (mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$message = "";
+$message = "The message is no message";
 
 if (isset($_POST['login'])) {
 
-	$uid = mysql_real_escape_string($conn, $_POST['username']);
-	$pwd = mysql_real_escape_string($conn, $_POST['password']);
+	$uid = mysqli_real_escape_string($conn, $_POST['username']);
+	$pwd = mysqli_real_escape_string($conn, $_POST['password']);
 
 	// Error handlers
 	// Check if inputs are empty
 	if(empty($uid) || empty($pwd)) {
 		$message = "Unsuccessful";
-        echo '<script>console.log("Empty inputs")</script>';
 		header("Location: index.php?login=empty");
 		exit();
 	}
@@ -38,22 +36,19 @@ if (isset($_POST['login'])) {
 		if ($resultCheck < 1) {
 			$message = "Unsuccessful";
 			header("Location: index.php?login=error");
-            echo '<script>console.log("Wrong inputs")</script>';
 			exit();
 		}
 		else {
 			$message = "Successfully authenticated";
 			$_SESSION['username'] = $uid;
 			$_SESSION['success'] = "You are now logged in";
-
-            echo '<script>console.log("Success. Should redirect")</script>';
 			header('Location: home.php');
 		}
 	}
 }
-else {
-	header("Location: ../index.php?login=error");
-	exit();
-}
+// else {
+// 	header("Location: ../index.php?login=error");
+// 	exit();
+// }
 
 ?>
