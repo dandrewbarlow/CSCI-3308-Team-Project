@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "Content-type: text/plain"
+echo ""
+echo ""
+cd /home/pi/Pi-in-the-Sky/
+
+git branch | grep '*'
