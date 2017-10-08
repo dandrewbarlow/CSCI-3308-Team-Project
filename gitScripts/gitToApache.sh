@@ -8,8 +8,17 @@
 #  Jared Cantilina
 #
 
-echo "Pulling data from git"
+echo "checking for branch change request"
+BRANCHFILE=/var/local/switchBranch.txt
 cd /home/pi/Pi-in-the-Sky/
+if [ -e $BRANCHFILE ]
+then
+	echo "Branch change requested"
+	git checkout $(cat $BRANCHFILE) && rm -f $BRANCHFILE
+	exit 0 #since git checkout will call this script, we don't need to do the rest.
+fi
+
+echo "Pulling data from git"
 git pull
 
 echo "checking for changes in documentRoot"
@@ -19,7 +28,7 @@ then
 	echo "no changes"
 
 else
-	echo"Tarring git/documentRoot"
+	echo "Tarring git/documentRoot"
 	cd /home/pi/Pi-in-the-Sky/documentRoot/
 	tar -cvf documentRoot.tar .
 
@@ -40,6 +49,8 @@ fi
 
 echo "checking for changes in cgi-bin"
 DIFF=$(diff -r /home/pi/Pi-in-the-Sky/cgi-bin/ /usr/local/apache/cgi-bin/)
+
+echo $DIFF
 if [ "$DIFF" == "" ]
 then
 	echo "no changes"
