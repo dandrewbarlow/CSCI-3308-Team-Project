@@ -5,6 +5,7 @@ $dbServerName = "localhost";
 $dbUsername = "root";
 $dbPassword = "PiInTheSky";
 $dbName = "piServer";
+$_SESSION['success'] = "";
 
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -28,7 +29,7 @@ if (isset($_POST['login'])) {
 	}
 	else {
 		//$pwd = md5($pwd);
-		$sql = "SELECT * FROM users WHERE user_uid='$uid' and psswd='$pwd'";
+		$sql = "SELECT * FROM users WHERE user_uid='$uid' AND psswd='$pwd'";
 		$result = mysql_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
 

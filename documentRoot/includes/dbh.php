@@ -2,7 +2,7 @@
 
 session_start();
 
-$dbServerName = "73.229.199.171";
+$dbServerName = "localhost";
 $dbUsername = "root";
 $dbPassword = "PiInTheSky";
 $dbName = "piServer";
