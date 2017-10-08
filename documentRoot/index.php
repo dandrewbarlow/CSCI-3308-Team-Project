@@ -31,6 +31,7 @@
 			<?php
 					echo $message;
 			 ?>
+			 <?php echo "Hello World" ?>
 		</p>
 	</body>
 </html>
