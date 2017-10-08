@@ -6,10 +6,10 @@ $dbUsername = "root";
 $dbPassword = "PiInTheSky";
 $dbName = "piServer";
 
-$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+$conn = mysql_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+if (mysql_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysql_connect_error();
     echo '<script>console.log("Failed to connect")</script>';
 }
 
@@ -17,8 +17,8 @@ $message = "";
 
 if (isset($_POST['login'])) {
 
-	$uid = mysqli_real_escape_string($conn, $_POST['username']);
-	$pwd = mysqli_real_escape_string($conn, $_POST['password']);
+	$uid = mysql_real_escape_string($conn, $_POST['username']);
+	$pwd = mysql_real_escape_string($conn, $_POST['password']);
 
 	// Error handlers
 	// Check if inputs are empty
