@@ -9,7 +9,8 @@ $dbName = "piServer";
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
 if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    echo '<script>console.log("Failed to connect")</script>';
 }
 
 $message = "";
@@ -23,7 +24,8 @@ if (isset($_POST['login'])) {
 	// Check if inputs are empty
 	if(empty($uid) || empty($pwd)) {
 		$message = "Unsuccessful";
-		header("Location: ../index.php?login=empty");
+        echo '<script>console.log("Empty inputs")</script>';
+		header("Location: index.php?login=empty");
 		exit();
 	}
 	else {
@@ -35,13 +37,16 @@ if (isset($_POST['login'])) {
 		// If username doesn't exist
 		if ($resultCheck < 1) {
 			$message = "Unsuccessful";
-			header("Location: ../index.php?login=error");
+			header("Location: index.php?login=error");
+            echo '<script>console.log("Wrong inputs")</script>';
 			exit();
 		}
 		else {
 			$message = "Successfully authenticated";
 			$_SESSION['username'] = $uid;
 			$_SESSION['success'] = "You are now logged in";
+
+            echo '<script>console.log("Success. Should redirect")</script>';
 			header('Location: home.php');
 		}
 	}

@@ -29,9 +29,7 @@
 		</div>
 		<p>
 			<?php
-				if ($message != ""){
 					echo $message;
-				}
 			 ?>
 		</p>
 	</body>
