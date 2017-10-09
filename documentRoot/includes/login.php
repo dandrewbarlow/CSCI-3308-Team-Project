@@ -29,6 +29,10 @@ if (isset($_POST['login'])) {
 	}
 	else {
 		//$pwd = md5($pwd);
+        $message = "Sending data"
+
+        sleep(5);
+
 		$sql = "SELECT * FROM users WHERE user_uid='$uid' AND psswd='$pwd'";
 		$result = mysql_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
@@ -36,6 +40,7 @@ if (isset($_POST['login'])) {
 		// If username doesn't exist
 		if ($resultCheck < 1) {
 			$message = "Unsuccessful";
+            sleep(5);
 			header("Location: index.php?login=error");
 			exit();
 		}
@@ -43,13 +48,14 @@ if (isset($_POST['login'])) {
 			$message = "Successfully authenticated";
 			$_SESSION['username'] = $uid;
 			$_SESSION['success'] = "You are now logged in";
+            sleep(5);
 			header('Location: home.php');
 		}
 	}
 }
-// else {
-// 	header("Location: ../index.php?login=error");
-// 	exit();
-// }
+else {
+	header("Location: ../index.php?login=error");
+	exit();
+}
 
 ?>

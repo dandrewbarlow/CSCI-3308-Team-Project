@@ -28,10 +28,7 @@
 			</form>
 		</div>
 		<p>
-			<?php
-					echo $message;
-			 ?>
-			 <?php echo "Hello World" ?>
+			<?php echo $message; ?>
 		</p>
 	</body>
 </html>
