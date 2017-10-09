@@ -22,6 +22,7 @@ echo "Pulling data from git"
 git pull
 
 echo "checking for changes in documentRoot"
+DOCUMENTROOT=/var/www/
 DIFF=$(diff -r /home/pi/Pi-in-the-Sky/documentRoot/ /usr/local/apache/htdocs/)
 if [ "$DIFF" == "" ]
 then
@@ -33,7 +34,7 @@ else
 	tar -cvf documentRoot.tar .
 
 	echo "cleaning apache/htdocs"
-	cd /var/www/
+	cd $DOCUMENTROOT
 	rm -rf *
 
 	echo "Unpacking"
