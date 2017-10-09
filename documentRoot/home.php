@@ -41,6 +41,7 @@
 		<?php  if (isset($_SESSION['username'])) : ?>
 			<div class="content">
 				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+				Enter <a href="/owncloud" target="_blank">OwnCloud</a>
 			</div>
 		<?php endif ?>
 
