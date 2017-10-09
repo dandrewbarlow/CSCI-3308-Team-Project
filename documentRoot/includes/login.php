@@ -2,8 +2,8 @@
 session_start();
 
 $dbServerName = "localhost";
-$dbUsername = "root";
-$dbPassword = "PiInTheSky";
+$dbUsername = "pi";
+$dbPassword = "";
 $dbName = "piServer";
 $_SESSION['success'] = "";
 
