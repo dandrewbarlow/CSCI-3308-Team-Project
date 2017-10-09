@@ -6,7 +6,7 @@
 		header('location: index.php');
 	}
 
-	if (isset($_GET['logout'])) {
+	if (isset($_POST['logout'])) {
 		session_destroy();
 		unset($_SESSION['username']);
 		header("location: index.php");
@@ -41,7 +41,9 @@
 		<?php  if (isset($_SESSION['username'])) : ?>
 			<div class="content">
 				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-				<button type="submit" name="logout" class="btn btn-danger">Logout</button>
+				<form action="home.php" method="post">
+					<button type="submit" name="logout" class="btn btn-danger">Logout</button>
+				</form>
 			</div>
 		<?php endif ?>
 	</div>

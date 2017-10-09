@@ -57,7 +57,8 @@ body {
 }
 
 .btn-danger {
-	color: #FF4C4C;
+	background-color: #FF4C4C;
+	color: #FFFFFF;
 }
 
 /* Mobile Screen Responsiveness */
