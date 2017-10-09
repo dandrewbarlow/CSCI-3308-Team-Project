@@ -33,15 +33,12 @@ else
 	tar -cvf documentRoot.tar .
 
 	echo "cleaning apache/htdocs"
-	cd /usr/local/apache/htdocs/
+	cd /var/www/
 	rm -rf *
 
 	echo "Unpacking"
 	mv /home/pi/Pi-in-the-Sky/documentRoot/documentRoot.tar ./
 	tar -xvf documentRoot.tar
-
-	echo "Copying .htaccess"
-	cp ../htaccess/.htaccess ./
 
 	echo "Cleaning up"
 	rm documentRoot.tar
