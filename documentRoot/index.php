@@ -1,4 +1,4 @@
-<!-- <?php //include('includes/login.php') ?> -->
+<?php include('includes/login.php') ?>
 <!DOCTYPE html>
 <html>
 	<head>
