@@ -53,9 +53,5 @@ if (isset($_POST['login'])) {
 		}
 	}
 }
-else {
-	header("Location: ../index.php?login=error");
-	exit();
-}
 
 ?>
