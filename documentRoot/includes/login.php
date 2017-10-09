@@ -29,7 +29,7 @@ if (isset($_POST['login'])) {
 	}
 	else {
 		//$pwd = md5($pwd);
-        $message = "Sending data"
+        $message = "Sending data";
 
         sleep(5);
 
