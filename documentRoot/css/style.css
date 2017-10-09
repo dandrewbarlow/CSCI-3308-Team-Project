@@ -61,6 +61,21 @@ body {
 	color: #FFFFFF;
 }
 
+.btn-danger:hover {
+	background-color: #4C1616;
+	cursor: hand;
+	cursor: pointer;
+}
+
+.footer {
+	text-align: center;
+	position: fixed;
+	padding: 5px;
+    bottom:0%;
+	width: 90%;
+    width:100%;
+}
+
 /* Mobile Screen Responsiveness */
 @media only screen and (max-width : 500px) {
     .login-form {

@@ -25,7 +25,7 @@
 	</div>
 	<div class="content">
 
-		<!-- notification message -->
+		<!-- Notification Message: Appears only the first time during any session -->
 		<?php if (isset($_SESSION['success'])) : ?>
 			<div class="error success" >
 				<h3>
@@ -37,15 +37,19 @@
 			</div>
 		<?php endif ?>
 
-		<!-- logged in user information -->
+		<!-- Logged in user information -->
 		<?php  if (isset($_SESSION['username'])) : ?>
 			<div class="content">
 				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-				<form action="home.php" method="post">
-					<button type="submit" name="logout" class="btn btn-danger">Logout</button>
-				</form>
 			</div>
 		<?php endif ?>
+
+	</div>
+
+	<div class="footer">
+		<form action="home.php" method="post">
+			<button type="submit" name="logout" class="btn btn-danger">Logout</button>
+		</form>
 	</div>
 
 </body>

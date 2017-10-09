@@ -1,4 +1,4 @@
-<?php include('includes/login.php') ?>
+<!-- <?php //include('includes/login.php') ?> -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -26,6 +26,10 @@
 					<button type="submit" name="login" class="btn">Login</button>
 				</div>
 			</form>
+		</div>
+
+		<div class="footer" style="padding: 10px;">
+			&copy; The Pi.in.the.Sky Team
 		</div>
 	</body>
 </html>
