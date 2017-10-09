@@ -39,8 +39,10 @@
 
 		<!-- logged in user information -->
 		<?php  if (isset($_SESSION['username'])) : ?>
-			<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-			<p> <a href="index.php?logout='1'" style="color: red;">logout</a> </p>
+			<div class="content">
+				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
+				<button type="submit" name="logout" class="btn btn-danger">Logout</button>
+			</div>
 		<?php endif ?>
 	</div>
 

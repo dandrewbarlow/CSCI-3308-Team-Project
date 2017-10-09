@@ -27,8 +27,5 @@
 				</div>
 			</form>
 		</div>
-		<p>
-			<?php echo $message; ?>
-		</p>
 	</body>
 </html>
