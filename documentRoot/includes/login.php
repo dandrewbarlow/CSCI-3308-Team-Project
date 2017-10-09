@@ -17,6 +17,8 @@ $message = "The message is no message";
 
 if (isset($_POST['login'])) {
 
+
+    $message = "Sending data";
 	$uid = mysqli_real_escape_string($conn, $_POST['username']);
 	$pwd = mysqli_real_escape_string($conn, $_POST['password']);
 
@@ -29,11 +31,11 @@ if (isset($_POST['login'])) {
 	}
 	else {
 		//$pwd = md5($pwd);
-        $message = "Sending data";
 
+        $message = "Authenticating data";
         sleep(5);
 
-		$sql = "SELECT * FROM users WHERE user_uid='$uid' AND psswd='$pwd'";
+		$sql = "SELECT * FROM piServer.users WHERE user_uid='$uid' AND psswd='$pwd'";
 		$result = mysql_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
 
