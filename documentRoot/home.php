@@ -43,6 +43,9 @@
 				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
 				Enter <a href="/owncloud" target="_blank">OwnCloud</a>
 			</div>
+			<div class="content">
+				Create a <a href="/register.php">new user</a>
+			</div>
 		<?php endif ?>
 
 	</div>
