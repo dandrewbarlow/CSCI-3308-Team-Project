@@ -14,6 +14,7 @@ if (mysqli_connect_errno()) {
 }
 
 $message = "The message is no message";
+$errors = array();
 
 if (isset($_POST['login'])) {
 
@@ -24,8 +25,7 @@ if (isset($_POST['login'])) {
 	// Check if inputs are empty
 	if(empty($uid) || empty($pwd)) {
 		$message = "Unsuccessful";
-		header("Location: index.php?login=empty");
-		exit();
+        array_push($errors, "Empty inputs");
 	}
 	else {
 		//$pwd = md5($pwd);
@@ -36,8 +36,7 @@ if (isset($_POST['login'])) {
 		// If username doesn't exist
 		if ($resultCheck < 1) {
 			$message = "Unsuccessful";
-			header("Location: index.php?login=error");
-			exit();
+            array_push($errors, "Incorrect username or password.");
 		}
 		else {
 			$message = "Successfully authenticated";

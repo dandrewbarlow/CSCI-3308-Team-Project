@@ -67,6 +67,11 @@ body {
 	cursor: pointer;
 }
 
+.error {
+	border-color: #4C1616;
+	color: #FF4C4C;
+}
+
 .footer {
 	text-align: center;
 	position: fixed;
