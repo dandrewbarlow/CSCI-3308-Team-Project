@@ -46,6 +46,9 @@
 			<div class="content">
 				Create a <a href="/register.php">new user</a>
 			</div>
+			<div class="content">
+				<a href="/reset.php">Reset Password</a>
+			</div>
 		<?php endif ?>
 
 	</div>
