@@ -30,7 +30,7 @@
 		<div class="login-form">
 			<h2>Login</h2>
 			<?php include('includes/errors.php') ?>
-			<form class="login" action="index.php" method="post">
+			<form class="login" action="register.php" method="post">
 				<div class="input-group">
 					<label>Name</label>&nbsp;
 					<input type="text" name="name" value="">

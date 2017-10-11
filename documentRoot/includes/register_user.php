@@ -55,7 +55,6 @@ if (isset($_POST['register'])) {
 		mysqli_query($conn, $sql);
 
 		// Redirect to home
-		$message = "Successfully authenticated";
 		$_SESSION['success'] = "You have created a new user";
         $_SESSION['username'] = $sessionUser;
 		header('Location: home.php');
