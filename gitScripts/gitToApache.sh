@@ -32,42 +32,45 @@ then
 else
 	echo "Tarring git/documentRoot"
 	cd $REPOROOT
-	tar -cvf documentRoot.tar .
+	tar -cf documentRoot.tar .
 
 	echo "cleaning apache/htdocs"
 	cd $DOCUMENTROOT
 	rm -rf *
 
 	echo "Unpacking"
-	mv /home/pi/Pi-in-the-Sky/documentRoot/documentRoot.tar ./
-	tar -xvf documentRoot.tar
+	mv $REPOROOT/documentRoot.tar ./
+	tar -xf documentRoot.tar
 
 	echo "Cleaning up"
 	rm documentRoot.tar
 fi
 
-echo "checking for changes in cgi-bin"
-DIFF=$(diff -r /home/pi/Pi-in-the-Sky/cgi-bin/ /usr/local/apache/cgi-bin/)
-
-echo $DIFF
-if [ "$DIFF" == "" ]
-then
-	echo "no changes"
-else
-	echo "Tarring git/cgi-bin"
-	cd /home/pi/Pi-in-the-Sky/cgi-bin/
-	tar -cvf cgi-bin.tar .
-
-	echo "cleaning apache/cgi-bin"
-	cd /usr/local/apache/cgi-bin/
-	rm -rf *
-
-	echo "Unpacking"
-	mv /home/pi/Pi-in-the-Sky/cgi-bin/cgi-bin.tar ./
-	tar -xvf cgi-bin.tar
-
-	echo "Cleaning up"
-	rm cgi-bin.tar
-fi
+# CGI is not enabled by default with apache2. I'll look into if CGI is still our best
+# bet, but I suspect we may go another route with scripts.
+#
+#echo "checking for changes in cgi-bin"
+#DIFF=$(diff -r /home/pi/Pi-in-the-Sky/cgi-bin/ /usr/local/apache/cgi-bin/)
+#
+#echo $DIFF
+#if [ "$DIFF" == "" ]
+#then
+#	echo "no changes"
+#else
+#	echo "Tarring git/cgi-bin"
+#	cd /home/pi/Pi-in-the-Sky/cgi-bin/
+#	tar -cvf cgi-bin.tar .
+#
+#	echo "cleaning apache/cgi-bin"
+#	cd /usr/local/apache/cgi-bin/
+#	rm -rf *
+#
+#	echo "Unpacking"
+#	mv /home/pi/Pi-in-the-Sky/cgi-bin/cgi-bin.tar ./
+#	tar -xvf cgi-bin.tar
+#
+#	echo "Cleaning up"
+#	rm cgi-bin.tar
+#fi
 
 echo "done!"
