@@ -51,10 +51,9 @@ if (isset($_POST['register'])) {
     }
 
 	if(count($errors) == 0) {
-		//$pwd = md5($pwd1);
-
+		$pwd = md5($pwd1); // Encrypt password
 		$sql = "INSERT INTO users (user_name, user_email, user_uid, psswd)
-					VALUES ('$name', '$email', '$uid', '$pwd1')";
+					VALUES ('$name', '$email', '$uid', '$pwd')";
 		mysqli_query($conn, $sql);
 
 		// Redirect to home
