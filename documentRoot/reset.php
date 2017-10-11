@@ -29,7 +29,7 @@
 		<div class="login-form">
 			<h2>Login</h2>
 			<?php include('includes/errors.php') ?>
-			<form class="login" action="register.php" method="post">
+			<form class="login" action="reset.php" method="post">
 				<div class="input-group">
 					<label>Old Password</label>&nbsp;
 					<input type="password" name="password_old" value="">
