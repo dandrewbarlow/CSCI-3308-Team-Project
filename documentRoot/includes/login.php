@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
         array_push($errors, "Please enter username and password.");
 	}
 	else {
-		//$pwd = md5($pwd);
+		$pwd = md5($pwd); // Encrypt password
 		$sql = "SELECT * FROM users WHERE user_uid='$uid' AND psswd='$pwd'";
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
