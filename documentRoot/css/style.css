@@ -68,8 +68,10 @@ body {
 }
 
 .error {
-	border-color: #4C1616;
-	color: #FF4C4C;
+	color: #A94442;
+	background: #F2DEDE;
+	border-radius: 5px;
+	border-color: #A94442;
 }
 
 .footer {

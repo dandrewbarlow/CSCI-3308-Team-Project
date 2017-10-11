@@ -25,7 +25,7 @@ if (isset($_POST['login'])) {
 	// Check if inputs are empty
 	if(empty($uid) || empty($pwd)) {
 		$message = "Unsuccessful";
-        array_push($errors, "Empty inputs");
+        array_push($errors, "Please enter username and password.");
 	}
 	else {
 		//$pwd = md5($pwd);
