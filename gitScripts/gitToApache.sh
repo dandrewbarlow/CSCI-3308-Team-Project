@@ -23,14 +23,15 @@ git pull
 
 echo "checking for changes in documentRoot"
 DOCUMENTROOT=/var/www/
-DIFF=$(diff -r /home/pi/Pi-in-the-Sky/documentRoot/ /usr/local/apache/htdocs/)
+REPOROOT=/home/pi/Pi-in-the-Sky/documentRoot/
+DIFF=$(diff -r $REPOROOT $DOCUMENT)
 if [ "$DIFF" == "" ]
 then
 	echo "no changes"
 
 else
 	echo "Tarring git/documentRoot"
-	cd /home/pi/Pi-in-the-Sky/documentRoot/
+	cd $REPOROOT
 	tar -cvf documentRoot.tar .
 
 	echo "cleaning apache/htdocs"
