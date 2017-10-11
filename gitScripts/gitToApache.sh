@@ -24,7 +24,7 @@ git pull
 echo "checking for changes in documentRoot"
 DOCUMENTROOT=/var/www/
 REPOROOT=/home/pi/Pi-in-the-Sky/documentRoot/
-DIFF=$(diff -r $REPOROOT $DOCUMENT)
+DIFF=$(diff -r $REPOROOT $DOCUMENTROOT)
 if [ "$DIFF" == "" ]
 then
 	echo "no changes"
