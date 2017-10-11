@@ -27,7 +27,7 @@
 		<div class="extra-space"></div>
 
 		<div class="login-form">
-			<h2>Login</h2>
+			<h2>Reset Password</h2>
 			<?php include('includes/errors.php') ?>
 			<form class="login" action="reset.php" method="post">
 				<div class="input-group">
