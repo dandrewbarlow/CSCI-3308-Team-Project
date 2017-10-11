@@ -27,25 +27,28 @@ if (isset($_POST['register'])) {
 	// Check if inputs are empty
 	if(empty($name)) {
         array_push($errors, "Please enter name.");
-        $_SESSION['success'] = "Boo";
 	}
 	if(empty($email)) {
         array_push($errors, "Please enter email.");
-        $_SESSION['success'] = "Boo2";
 	}
 	if(empty($uid)) {
         array_push($errors, "Please enter username.");
-        $_SESSION['success'] = "Boo3";
 	}
 	if(empty($pwd1) || empty($pwd2)) {
         array_push($errors, "Please enter password.");
-        $_SESSION['success'] = "Boo4";
 	}
 	if ($pwd1 != $pwd2){
         array_push($errors, "Passwords do no match.");
-        $_SESSION['success'] = "Boo5";
 	}
-    $_SESSION['success'] = "Boo noo";
+    // Check if username already exists
+    if(!empty($uid)){
+        $sql = "SELECT * FROM users WHERE user_uid='$uid'";
+		$result = mysqli_query($conn, $sql);
+		$resultCheck = mysqli_num_rows($result);
+        if ($resultCheck >= 1){
+            array_push($errors, "Username already exists.");
+        }
+    }
 
 	if(count($errors) == 0) {
 		//$pwd = md5($pwd1);
