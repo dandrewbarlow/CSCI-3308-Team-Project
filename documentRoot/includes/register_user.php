@@ -1,9 +1,11 @@
 <?php
+session_start();
 
 $dbServerName = "localhost";
 $dbUsername = "pi";
 $dbPassword = "";
 $dbName = "piServer";
+$sessionUser = $_SESSION['username'];
 
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -25,19 +27,25 @@ if (isset($_POST['register'])) {
 	// Check if inputs are empty
 	if(empty($name)) {
         array_push($errors, "Please enter name.");
+        $_SESSION['success'] = "Boo";
 	}
 	if(empty($email)) {
         array_push($errors, "Please enter email.");
+        $_SESSION['success'] = "Boo2";
 	}
 	if(empty($uid)) {
         array_push($errors, "Please enter username.");
+        $_SESSION['success'] = "Boo3";
 	}
 	if(empty($pwd1) || empty($pwd2)) {
         array_push($errors, "Please enter password.");
+        $_SESSION['success'] = "Boo4";
 	}
 	if ($pwd1 != $pwd2){
         array_push($errors, "Passwords do no match.");
+        $_SESSION['success'] = "Boo5";
 	}
+    $_SESSION['success'] = "Boo noo";
 
 	if(count($errors) == 0) {
 		//$pwd = md5($pwd1);
@@ -49,6 +57,7 @@ if (isset($_POST['register'])) {
 		// Redirect to home
 		$message = "Successfully authenticated";
 		$_SESSION['success'] = "You have created a new user";
+        $_SESSION['username'] = $sessionUser;
 		header('Location: home.php');
 	}
 }

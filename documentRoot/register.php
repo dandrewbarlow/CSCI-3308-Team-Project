@@ -12,8 +12,8 @@
 		header("location: index.php");
 	}
 
+	include('includes/register_user.php');
 ?>
-<?php include('includes/register_user.php') ?>
 <!DOCTYPE html>
 <html>
 	<head>
