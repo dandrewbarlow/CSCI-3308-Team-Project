@@ -18,8 +18,8 @@ $errors = array();
 
 if (isset($_POST['register'])) {
 
-	$name = mysqli_real_escape_string($conn, $_POST['name'])
-	$email = mysqli_real_escape_string($conn, $_POST['email'])
+	$name = mysqli_real_escape_string($conn, $_POST['name']);
+	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$uid = mysqli_real_escape_string($conn, $_POST['username']);
 	$pwd1 = mysqli_real_escape_string($conn, $_POST['password1']);
 	$pwd2 = mysqli_real_escape_string($conn, $_POST['password2']);
