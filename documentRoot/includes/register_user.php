@@ -1,11 +1,9 @@
 <?php
-session_start();
 
 $dbServerName = "localhost";
 $dbUsername = "pi";
 $dbPassword = "";
 $dbName = "piServer";
-$_SESSION['success'] = "";
 
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -13,7 +11,6 @@ if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$message = "The message is no message";
 $errors = array();
 
 if (isset($_POST['register'])) {
@@ -47,7 +44,7 @@ if (isset($_POST['register'])) {
 
 		$sql = "INSERT INTO users (user_name, user_email, user_uid, psswd)
 					VALUES ('$name', '$email', '$uid', '$pwd1')";
-		$result = mysqli_query($conn, $sql);
+		mysqli_query($conn, $sql);
 
 		// Redirect to home
 		$message = "Successfully authenticated";
