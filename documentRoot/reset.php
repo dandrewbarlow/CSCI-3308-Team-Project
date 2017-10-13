@@ -1,4 +1,3 @@
-<!-- Webpage for resetting password -->
 <?php
 	session_start();
 
@@ -11,6 +10,7 @@
 	// Includes password reset module
 	include('includes/server.php');
 ?>
+<!-- Webpage for resetting password -->
 <!DOCTYPE html>
 <html>
 	<head>

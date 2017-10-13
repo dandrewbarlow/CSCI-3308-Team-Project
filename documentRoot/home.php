@@ -1,4 +1,3 @@
-<!-- Home page for a logged in user -->
 <?php
 	session_start();
 
@@ -12,6 +11,7 @@
 	include('includes/server.php');
 
 ?>
+<!-- Home page for a logged in user -->
 <!DOCTYPE html>
 <html>
 <head>

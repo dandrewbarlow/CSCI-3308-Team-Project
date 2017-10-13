@@ -8,10 +8,6 @@
 -->
 <?php
 
-// IMPORTANT
-// This initializes the session
-session_start();
-
 include('dbconnect.php'); // IMPORTANT: Connects website to database
 
 include('login.php'); // Login module

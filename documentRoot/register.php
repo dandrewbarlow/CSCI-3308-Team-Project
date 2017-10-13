@@ -1,4 +1,3 @@
-<!-- Webpage for registering new user -->
 <?php
 	session_start();
 
@@ -11,6 +10,7 @@
 	// Includes new user registration module
 	include('includes/server.php');
 ?>
+<!-- Webpage for registering new user -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -27,7 +27,7 @@
 
 		<div class="login-form">
 			<h2>Register new user</h2>
-			
+
 			<?php include('includes/errors.php') ?>
 
 			<form class="login" action="register.php" method="post">

@@ -1,6 +1,8 @@
-<!-- Login page for users -->
-<!-- Includes login module -->
-<?php include('includes/server.php') ?>
+<?php
+	session_start();
+	include('includes/server.php')
+?>
+<!-- Login Page -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,7 +19,7 @@
 
 		<div class="login-form">
 			<h2>Login</h2>
-			
+
 			<?php include('includes/errors.php') ?>
 
 			<form class="login" action="index.php" method="post">
