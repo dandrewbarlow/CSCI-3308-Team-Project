@@ -1,14 +1,17 @@
+<!-- Password Reset module -->
 <?php
 
+// Check if 'reset-password' button is clicked
 if (isset($_POST['reset-password'])) {
 
-    $errors = array();
+    $errors = array(); // Iniitalize error array
 
+    // Retrieve form inputs via POST method
 	$pwd_old = mysqli_real_escape_string($conn, $_POST['password_old']);
 	$pwd1 = mysqli_real_escape_string($conn, $_POST['password_new1']);
 	$pwd2 = mysqli_real_escape_string($conn, $_POST['password_new2']);
 
-	// Error handlers
+	// HANDLE ERRORS
 	// Check if inputs are empty
 	if(empty($pwd_old)) {
         array_push($errors, "Please enter your old password.");
@@ -36,6 +39,7 @@ if (isset($_POST['reset-password'])) {
         array_push($errors, "New password must be different than your old password.");
     }
 
+    // If there are no errors, update the row in the database
 	if(count($errors) == 0) {
 		$pwd = md5($pwd1); // Encrypt password
 		$sql = "UPDATE users

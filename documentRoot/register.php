@@ -1,11 +1,14 @@
+<!-- Webpage for registering new user -->
 <?php
 	session_start();
 
+	// Check if user is logged in
 	if (!isset($_SESSION['username'])) {
 		$_SESSION['msg'] = "You must log in first";
 		header('location: index.php');
 	}
 
+	// Includes new user registration module
 	include('includes/server.php');
 ?>
 <!DOCTYPE html>
@@ -15,6 +18,7 @@
 		<title>Register | Pi In The Sky</title>
 		<link rel="stylesheet" href="/css/style.css">
 	</head>
+
 	<body>
 		<div class="header">
 			<h1>Pi In the Sky</h1>
@@ -23,7 +27,9 @@
 
 		<div class="login-form">
 			<h2>Register new user</h2>
+			
 			<?php include('includes/errors.php') ?>
+
 			<form class="login" action="register.php" method="post">
 				<div class="input-group">
 					<label>Name</label>&nbsp;
@@ -49,10 +55,13 @@
 					<button type="submit" name="register" class="btn">Register new user</button>
 				</div>
 			</form>
+
 		</div>
 
 		<div class="footer" style="padding: 10px;">
 			&copy; The Pi.in.the.Sky Team
 		</div>
+
 	</body>
+
 </html>

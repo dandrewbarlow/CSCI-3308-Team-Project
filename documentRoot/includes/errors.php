@@ -1,3 +1,4 @@
+<!-- Display errors that any input form has -->
 <?php  if (count($errors) > 0) : ?>
 	<div class="input-group error">
 		<?php foreach ($errors as $error) : ?>
