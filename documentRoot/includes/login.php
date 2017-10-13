@@ -1,7 +1,4 @@
 <?php
-session_start();
-
-include('dhb.php');
 
 if (isset($_POST['login'])) {
 

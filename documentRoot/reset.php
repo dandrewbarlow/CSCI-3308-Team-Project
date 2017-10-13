@@ -12,7 +12,7 @@
 		header("location: index.php");
 	}
 
-	include('includes/reset-password.php');
+	include('includes/server.php');
 ?>
 <!DOCTYPE html>
 <html>

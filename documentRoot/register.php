@@ -12,7 +12,7 @@
 		header("location: index.php");
 	}
 
-	include('includes/register_user.php');
+	include('includes/server.php');
 ?>
 <!DOCTYPE html>
 <html>
