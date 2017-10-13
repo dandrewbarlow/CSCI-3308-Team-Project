@@ -1,22 +1,11 @@
 <?php
 session_start();
 
-$dbServerName = "localhost";
-$dbUsername = "pi";
-$dbPassword = "";
-$dbName = "piServer";
-$_SESSION['success'] = "";
-
-$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
-
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-$message = "The message is no message";
-$errors = array();
+include('dhb.php');
 
 if (isset($_POST['login'])) {
+
+    $errors = array();
 
 	$uid = mysqli_real_escape_string($conn, $_POST['username']);
 	$pwd = mysqli_real_escape_string($conn, $_POST['password']);
@@ -24,7 +13,6 @@ if (isset($_POST['login'])) {
 	// Error handlers
 	// Check if inputs are empty
 	if(empty($uid) || empty($pwd)) {
-		$message = "Unsuccessful";
         array_push($errors, "Please enter username and password.");
 	}
 	else {
@@ -35,11 +23,9 @@ if (isset($_POST['login'])) {
 
 		// If username doesn't exist
 		if ($resultCheck < 1) {
-			$message = "Unsuccessful";
             array_push($errors, "Incorrect username or password.");
 		}
 		else {
-			$message = "Successfully authenticated";
 			$_SESSION['username'] = $uid;
 			$_SESSION['success'] = "You are now logged in";
 			header('Location: home.php');

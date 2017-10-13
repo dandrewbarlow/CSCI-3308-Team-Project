@@ -1,21 +1,11 @@
 <?php
 session_start();
 
-$dbServerName = "localhost";
-$dbUsername = "pi";
-$dbPassword = "";
-$dbName = "piServer";
-$sessionUser = $_SESSION['username'];
-
-$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
-
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-$errors = array();
+include('dhb.php');
 
 if (isset($_POST['register'])) {
+
+    $errors = array();
 
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -58,7 +48,6 @@ if (isset($_POST['register'])) {
 
 		// Redirect to home
 		$_SESSION['success'] = "You have created a new user";
-        $_SESSION['username'] = $sessionUser;
 		header('Location: home.php');
 	}
 }

@@ -1,21 +1,11 @@
 <?php
 session_start();
 
-$dbServerName = "localhost";
-$dbUsername = "pi";
-$dbPassword = "";
-$dbName = "piServer";
-$sessionUser = $_SESSION['username'];
-
-$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
-
-if (mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-}
-
-$errors = array();
+include('dhb.php');
 
 if (isset($_POST['reset-password'])) {
+
+    $errors = array();
 
 	$pwd_old = mysqli_real_escape_string($conn, $_POST['password_old']);
 	$pwd1 = mysqli_real_escape_string($conn, $_POST['password_new1']);
