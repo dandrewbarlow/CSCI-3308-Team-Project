@@ -50,6 +50,7 @@
 			</div>
 		<?php endif ?>
 
+		<a href="/restart.php">restart the server</a>	
 	</div>
 
 	<div class="footer">
