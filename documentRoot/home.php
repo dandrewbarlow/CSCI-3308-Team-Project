@@ -49,7 +49,7 @@
 				<a href="/reset.php">Reset Password</a>
 			</div>
 		<?php endif ?>
-
+		
 	</div>
 
 	<div class="footer">
