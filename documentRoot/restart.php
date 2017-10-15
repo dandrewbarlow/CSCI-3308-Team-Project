@@ -1,3 +1,3 @@
 <?php
-	exec(/usr/bin/sudo /sbin/restart);
+	exec('sudo /sbin/reboot');
 ?>
