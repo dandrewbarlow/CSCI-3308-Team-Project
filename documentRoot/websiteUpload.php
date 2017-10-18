@@ -1,34 +1,51 @@
 <?php
 //If not coming from submit page:
-//	report error, exit
-//
-//get file name
-//get file tmpName
-//get file type
-//get file size
-//
-//if type is not an allowable type:
-//	exit, report error
-//
-//if size > MAXFILESIZE:
-//	exit, report error
-//
-//Upload file to new directory
-//while checksum fails:
-//	Upload file to new directory
-//	counter++
-//	if counter > maxTries
-//		exit, report error
-//
-//If there is a domain name:
-//	check if valid domain
-//	check that domain points to server IP
-//	add entry to sites-available with domain name and document root
-//	add soft link from sites-enabled to sites-available entry
-//else:
-//	add alias to apache2.conf to ip/sitename
-//
-//restart apache
+//	go to login page
+session_start();
+if (!isset($_SESSION['username']))
+{
+	$_SESSION['msg'] = "You must log in first";
+	header{'location: index.php'};
+}
+
+
+if(isset($_POST['submit']))
+{
+	//get file name
+	//get file tmpName
+	//get file type
+	//get file size
+	$name = $_FILES['siteFile']['name'];
+	$tmpName = $_FILES['siteFile']['tmp_name'];
+	$type = $_FILES['siteFile']['type'];
+	$size = $_FILES['siteFile']['size'];
+
+	
+	//if type is not an allowable type:
+	if(!($type == ".zip" || $type == ".html"))
+	{
+		//exit, report error
+		echo "Improper File type. Must be .zip or .html";
+		header{'location: websiteUpload.php'}
+	}
+
+
+	//Upload file to new directory
+	//while checksum fails:
+	//	Upload file to new directory
+	//	counter++
+	//	if counter > maxTries
+	//		exit, report error
+	//
+	//If there is a domain name:
+	//	check if valid domain
+	//	check that domain points to server IP
+	//	add entry to sites-available with domain name and document root
+	//	add soft link from sites-enabled to sites-available entry
+	//else:
+	//	add alias to apache2.conf to ip/sitename
+	//
+	//restart apache
 ?>
 
 <!DOCTYPE html>
