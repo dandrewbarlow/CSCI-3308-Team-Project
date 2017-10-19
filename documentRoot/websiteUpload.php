@@ -33,7 +33,7 @@ if(isset($_POST['submit']))
 
 
 	//Upload file to new directory
-	exec('mkdir /var/www/$siteName/');
+	exec('mkdir /var/userSites/$siteName/');
 	if(move_uploaded_file($_FILES['siteFile']['tmp_name'], '/var/www/$siteName/'))
 	{
 		if($type == "application/zip")
@@ -43,7 +43,7 @@ if(isset($_POST['submit']))
 	}
 	else
 	{
-		exec('rmdir /var/www/$siteName/');
+		exec('rmdir /var/userSites/$siteName/');
 		echo "There was an issue uploading your file";
 	}
 	//while checksum fails:
@@ -84,6 +84,8 @@ if(isset($_POST['submit']))
 	<form action="websiteUpload.php" method="post" enctype="multipart/form-data">
 		Select File to Upload:
 		Site name:<input type="text" name="siteName"><br>
+		Is this a domain name?<br>
+		<input type="radio" name="domain" value="true">Yes<br>
 		<input type="file" name="siteFile" id="siteFile"><br>
 		<input type="submit" value="Upload File" name="submit">
 	</form>
