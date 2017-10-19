@@ -21,7 +21,7 @@ if(isset($_POST['submit']))
 	$size = $_FILES['siteFile']['size'];
 	//get site name
 	$siteName = $_POST['siteName'];
-
+	echo $siteName;
 	
 	//if type is not an allowable type:
 	if(!($type == "application/zip" || $type == "text/html"))
@@ -33,17 +33,17 @@ if(isset($_POST['submit']))
 
 
 	//Upload file to new directory
-	exec('mkdir /var/userSites/$siteName/');
-	if(move_uploaded_file($_FILES['siteFile']['tmp_name'], '/var/www/$siteName/'))
+	exec('mkdir /var/userSites/'.escapeshellarg($siteName).'/');
+	if(move_uploaded_file($_FILES['siteFile']['tmp_name'], '/var/userSites/'.$siteName.'/'.$name))
 	{
 		if($type == "application/zip")
 		{
-			exec('unzip /var/www/$sitename/$name');
+			exec('unzip /var/www/'.escapeshellarg($sitename).'/'.escapeshellarg($name));
 		}
 	}
 	else
 	{
-		exec('rmdir /var/userSites/$siteName/');
+		exec('rmdir /var/userSites/'.escapeshellarg($siteName).'/');
 		echo "There was an issue uploading your file";
 	}
 	//while checksum fails:
@@ -52,14 +52,21 @@ if(isset($_POST['submit']))
 	//	if counter > maxTries
 	//		exit, report error
 		
-	//If there is a domain name:
-	//	check if valid domain
-	//	check that domain points to server IP
-	//	add entry to sites-available with domain name and document root
-	//	add soft link from sites-enabled to sites-available entry
-	//else:
-	//	add alias to apache2.conf to ip/sitename
-	//
+	//If site name is a domain name:
+	if($_POST['domain'] == 'true')
+	{
+		//check if valid domain
+		//check that domain points to server IP
+		//add entry to sites-available with domain name and document root
+		//add soft link from sites-enabled to sites-available entry
+	}
+	else
+	{
+		//add directory and alias to new sites-available conf file
+	}
+
+	//soft link sites available to sites enabled
+	//exec('ln -s /etc/apache2/sites-available/$siteName.conf /etc/apache2/sites-enabled/$siteName.conf')
 	
 	//restart apache
 }
