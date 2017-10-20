@@ -29,16 +29,28 @@ if(isset($_POST['submit']))
 		//exit, report error
 		echo $type;
 		echo " is an improper File type. Must be .zip or .html";
+		header['location: websiteUpload.php'];
 	}
 
-
-	//Upload file to new directory
+	//if directory doesn't exist, create it.
+	if(file_exists('/var/userSites/'.escapeshellarg($siteName).'/'))
+	{
+		$_SESSION['msg'] = "That site name is already taken";
+		//header['location: websiteUpload.php'];
+	}
 	exec('mkdir /var/userSites/'.escapeshellarg($siteName).'/');
+	//Upload file to new directory
 	if(move_uploaded_file($_FILES['siteFile']['tmp_name'], '/var/userSites/'.$siteName.'/'.$name))
 	{
+		//unzip zipped files
 		if($type == "application/zip")
 		{
 			exec('unzip /var/www/'.escapeshellarg($sitename).'/'.escapeshellarg($name));
+		}
+		else
+		{
+			//If just one file, make it the index file
+			exec('mv /var/userSites/'.$siteName.'/'.$name.' /var/userSites/'.$siteName.'/index.html');
 		}
 	}
 	else
@@ -63,10 +75,20 @@ if(isset($_POST['submit']))
 	else
 	{
 		//add directory and alias to new sites-available conf file
+		$confFile = fopen('/etc/apache2/sites-available/'.$siteName.'.conf','w');
+		fwrite($confFile,'Alias /'.$siteName.' "/var/userSites/'.$siteName.'/"');
+		fwrite($confFile,"\n");
+		fwrite($confFile,'<Directory /var/userSites/'.$siteName.'/>');
+		fwrite($confFile,"\n");
+		fwrite($confFile,'  Require all granted');
+		fwrite($confFile,"\n");
+		fwrite($confFile,'</Directory>');
+		fwrite($confFile,"\n");
+		fclose($confFile);
 	}
 
 	//soft link sites available to sites enabled
-	//exec('ln -s /etc/apache2/sites-available/$siteName.conf /etc/apache2/sites-enabled/$siteName.conf')
+	exec('ln -s /etc/apache2/sites-available/'.$siteName.'.conf /etc/apache2/sites-enabled/'.$siteName.'.conf');
 	
 	//restart apache
 }
