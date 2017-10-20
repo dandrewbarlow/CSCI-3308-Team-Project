@@ -91,6 +91,7 @@ if(isset($_POST['submit']))
 	exec('ln -s /etc/apache2/sites-available/'.$siteName.'.conf /etc/apache2/sites-enabled/'.$siteName.'.conf');
 	
 	//restart apache
+	exec('sudo apache2ctl -k graceful');
 }
 ?>
 
@@ -108,7 +109,9 @@ if(isset($_POST['submit']))
 	<p>Here you can upload files to be hosted as a new website!<br>
 	You can either upload a single html document or a .zip of a website directory<br>
 	If you have a domain name for your website, it will be hosted there. <br>
-	Otherwise just give your site a name and it'll be hosted at "this_ip/websitename"</p>
+	Otherwise just give your site a name and it'll be hosted at "this_ip/websitename"<br>
+	<br>
+	If you are uploading a .zip make sure that the page you want a visitor to see first is called "index.html" or any other web accessible file extension.<br></p>
 	<!-- Form -->
 	<form action="websiteUpload.php" method="post" enctype="multipart/form-data">
 		Select File to Upload:
