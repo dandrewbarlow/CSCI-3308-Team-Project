@@ -70,7 +70,17 @@ if(isset($_POST['submit']))
 		//check if valid domain
 		//check that domain points to server IP
 		//add entry to sites-available with domain name and document root
-		//add soft link from sites-enabled to sites-available entry
+		$confFile = fopen('/etc/apache2/sites-available/'.$siteName.'.conf','w');
+		fwrite($confFile,"<VirtualHost *:80>\n");
+		fwrite($confFile,"  ServerName ".$siteName);
+		fwrite($confFile,"\n");
+		fwrite($confFile,"  ServerAlias www.".$siteName);
+		fwrite($confFile,"\n");
+		fwrite($confFile,"  DocumentRoot /var/userSites/".$siteName."/");
+		fwrite($confFile,"\n");
+		fwrite($confFile,"  ErrorLog ${APACHE_LOG_DIR}/".$siteName."_error.log");
+		fwrite($confFile,"\n");
+		fwrite($confFile,"</VirtualHost>");
 	}
 	else
 	{
