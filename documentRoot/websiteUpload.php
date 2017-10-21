@@ -45,7 +45,17 @@ if(isset($_POST['submit']))
 		//unzip zipped files
 		if($type == "application/zip")
 		{
-			exec('unzip /var/www/'.escapeshellarg($sitename).'/'.escapeshellarg($name));
+			$zip = new ZipArchive;
+			if($zip->open('/var/userSites/'.$siteName.'/'.$name))
+			{
+				$zip->extractTo('/var/userSites/'.$siteName.'/');
+				$zip->close();
+				echo 'unzipping success';
+			}
+			else
+			{
+				echo 'unip failed';
+			}
 		}
 		else
 		{
@@ -78,7 +88,9 @@ if(isset($_POST['submit']))
 		fwrite($confFile,"\n");
 		fwrite($confFile,"  DocumentRoot /var/userSites/".$siteName."/");
 		fwrite($confFile,"\n");
-		fwrite($confFile,"  ErrorLog ${APACHE_LOG_DIR}/".$siteName."_error.log");
+		fwrite($confFile,"  ErrorLog /var/log/apache2/".$siteName."_error.log");
+		fwrite($confFile,"\n");
+		fwrite($confFile,"  Require all granted");
 		fwrite($confFile,"\n");
 		fwrite($confFile,"</VirtualHost>");
 	}
