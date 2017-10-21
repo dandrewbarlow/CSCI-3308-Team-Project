@@ -90,9 +90,14 @@ if(isset($_POST['submit']))
 		fwrite($confFile,"\n");
 		fwrite($confFile,"  ErrorLog /var/log/apache2/".$siteName."_error.log");
 		fwrite($confFile,"\n");
-		fwrite($confFile,"  Require all granted");
+		fwrite($confFile,"  <Directory />");
+		fwrite($confFile,"\n");
+		fwrite($confFile,"    Require all granted");
+		fwrite($confFile,"\n");
+		fwrite($confFile,"  </Directory>");
 		fwrite($confFile,"\n");
 		fwrite($confFile,"</VirtualHost>");
+		fclose($confFile);
 	}
 	else
 	{
