@@ -26,9 +26,7 @@ if(isset($_POST['submit']))
 	if(!($type == "application/zip" || $type == "text/html"))
 	{
 		//exit, report error
-		echo $type;
-		echo " is an improper File type. Must be .zip or .html";
-		header['location: websiteUpload.php'];
+		die($type." Is not a valid file type. Must be either .html or .zip");
 	}
 	
 	//If site name is a domain name:
@@ -37,6 +35,7 @@ if(isset($_POST['submit']))
 		//check if valid domain
 		$realIP = file_get_contents("http://ipecho.net/plain");
 		$givenIP = gethostbyname($siteName);
+
 		//check that domain points to server IP
 		if($givenIP != $realIP)
 		{
@@ -50,7 +49,7 @@ if(isset($_POST['submit']))
 	//	if counter > maxTries
 	//		exit, report error
 
-	//FALUIRES SHOULD NOT OCCUER AFTER THIS POINT
+	//FALUIRES SHOULD NOT OCCUR AFTER THIS POINT
 	//DO ALL ERROR CHECKING ABOVE HERE
 	
 	//create directory
