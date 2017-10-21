@@ -8,7 +8,7 @@ if (!isset($_SESSION['username']))
 	header['location: index.php'];
 }
 
-
+//once button is clicked
 if(isset($_POST['submit']))
 {
 	//get file name
@@ -21,7 +21,6 @@ if(isset($_POST['submit']))
 	$size = $_FILES['siteFile']['size'];
 	//get site name
 	$siteName = $_POST['siteName'];
-	echo $siteName;
 	
 	//if type is not an allowable type:
 	if(!($type == "application/zip" || $type == "text/html"))
@@ -31,12 +30,29 @@ if(isset($_POST['submit']))
 		echo " is an improper File type. Must be .zip or .html";
 		header['location: websiteUpload.php'];
 	}
+	
+	//If site name is a domain name:
+	if($_POST['domain'] == 'true')
+	{
+		//check if valid domain
+		$realIP = file_get_contents("http://ipecho.net/plain");
+		$givenIP = gethostbyname($siteName);
+		//check that domain points to server IP
+		if($givenIP != $realIP)
+		{
+			die("That domain does not point to this server");
+		}
+	}
+
 	//while checksum fails:
 	//	Upload file to new directory
 	//	counter++
 	//	if counter > maxTries
 	//		exit, report error
 
+	//FALUIRES SHOULD NOT OCCUER AFTER THIS POINT
+	//DO ALL ERROR CHECKING ABOVE HERE
+	
 	//create directory
 	exec('mkdir /var/userSites/'.escapeshellarg($siteName).'/');
 	//Upload file to new directory
@@ -50,8 +66,6 @@ if(isset($_POST['submit']))
 			{
 				$zip->extractTo('/var/userSites/'.$siteName.'/');
 				$zip->close();
-				//clean up .zip file
-				exec('rm /var/userSites/'.siteName.'/'.$name);
 			}
 			else
 			{
@@ -74,18 +88,6 @@ if(isset($_POST['submit']))
 	//If site name is a domain name:
 	if($_POST['domain'] == 'true')
 	{
-		//check if valid domain
-		$realIP = file_get_contents("http://ipecho.net/plain");
-		$givenIP = gethostbyname($siteName);
-		if($givenIP == 0);
-		{
-			die("That domain name is not valid");
-		}
-		if($givenIP != $realIP)
-		{
-			die("That domain does not point to this server");
-		}
-		//check that domain points to server IP
 		//add entry to sites-available with domain name and document root
 		$confFile = fopen('/etc/apache2/sites-available/'.$siteName.'.conf','w');
 		fwrite($confFile,"<VirtualHost *:80>\n");
