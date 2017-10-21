@@ -76,9 +76,15 @@ if(isset($_POST['submit']))
 	{
 		//check if valid domain
 		$realIP = file_get_contents("http://ipecho.net/plain");
-		echo $realIP;
 		$givenIP = gethostbyname($siteName);
-		echo $givenIP;
+		if($givenIP == 0);
+		{
+			die("That domain name is not valid");
+		}
+		if($givenIP != $realIP)
+		{
+			die("That domain does not point to this server");
+		}
 		//check that domain points to server IP
 		//add entry to sites-available with domain name and document root
 		$confFile = fopen('/etc/apache2/sites-available/'.$siteName.'.conf','w');
