@@ -37,6 +37,7 @@ else
 	echo "cleaning apache/htdocs"
 	cd $DOCUMENTROOT
 	rm -rf *
+	rm .*.swp
 
 	echo "Unpacking"
 	mv $REPOROOT/documentRoot.tar ./
