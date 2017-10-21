@@ -31,13 +31,13 @@ if(isset($_POST['submit']))
 		echo " is an improper File type. Must be .zip or .html";
 		header['location: websiteUpload.php'];
 	}
+	//while checksum fails:
+	//	Upload file to new directory
+	//	counter++
+	//	if counter > maxTries
+	//		exit, report error
 
-	//if directory doesn't exist, create it.
-	if(file_exists('/var/userSites/'.escapeshellarg($siteName).'/'))
-	{
-		$_SESSION['msg'] = "That site name is already taken";
-		//header['location: websiteUpload.php'];
-	}
+	//create directory
 	exec('mkdir /var/userSites/'.escapeshellarg($siteName).'/');
 	//Upload file to new directory
 	if(move_uploaded_file($_FILES['siteFile']['tmp_name'], '/var/userSites/'.$siteName.'/'.$name))
@@ -50,11 +50,12 @@ if(isset($_POST['submit']))
 			{
 				$zip->extractTo('/var/userSites/'.$siteName.'/');
 				$zip->close();
-				echo 'unzipping success';
+				//clean up .zip file
+				exec('rm /var/userSites/'.siteName.'/'.$name);
 			}
 			else
 			{
-				echo 'unip failed';
+				echo 'unzip failed';
 			}
 		}
 		else
@@ -65,19 +66,19 @@ if(isset($_POST['submit']))
 	}
 	else
 	{
+		//if something went wrong, remove the directory
 		exec('rmdir /var/userSites/'.escapeshellarg($siteName).'/');
 		echo "There was an issue uploading your file";
 	}
-	//while checksum fails:
-	//	Upload file to new directory
-	//	counter++
-	//	if counter > maxTries
-	//		exit, report error
 		
 	//If site name is a domain name:
 	if($_POST['domain'] == 'true')
 	{
 		//check if valid domain
+		$realIP = file_get_contents("http://ipecho.net/plain");
+		echo $realIP;
+		$givenIP = gethostbyname($siteName);
+		echo $givenIP;
 		//check that domain points to server IP
 		//add entry to sites-available with domain name and document root
 		$confFile = fopen('/etc/apache2/sites-available/'.$siteName.'.conf','w');
