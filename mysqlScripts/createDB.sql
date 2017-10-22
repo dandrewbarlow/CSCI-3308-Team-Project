@@ -9,4 +9,4 @@ create table if not exists users (
 
 insert into users (user_id, user_name, user_email, user_uid, psswd)
 	values
-	(1, 'Admin', 'apve4733@colorado.edu', 'pi', 'PiInTheSky');
+	(1, 'Admin', '', 'god', 'be39f9ab6be772aa81422ea983664c9e');
