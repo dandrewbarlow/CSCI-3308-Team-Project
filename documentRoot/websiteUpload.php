@@ -5,7 +5,7 @@ session_start();
 if (!isset($_SESSION['username']))
 {
 	$_SESSION['msg'] = "You must log in first";
-	header['location: index.php'];
+	header('location: index.php');
 }
 
 //once button is clicked
@@ -21,14 +21,14 @@ if(isset($_POST['submit']))
 	$size = $_FILES['siteFile']['size'];
 	//get site name
 	$siteName = $_POST['siteName'];
-	
+
 	//if type is not an allowable type:
 	if(!($type == "application/zip" || $type == "text/html"))
 	{
 		//exit, report error
 		die($type." Is not a valid file type. Must be either .html or .zip");
 	}
-	
+
 	//If site name is a domain name:
 	if($_POST['domain'] == 'true')
 	{
@@ -51,7 +51,7 @@ if(isset($_POST['submit']))
 
 	//FALUIRES SHOULD NOT OCCUR AFTER THIS POINT
 	//DO ALL ERROR CHECKING ABOVE HERE
-	
+
 	//create directory
 	exec('mkdir /var/userSites/'.escapeshellarg($siteName).'/');
 	//Upload file to new directory
@@ -83,7 +83,7 @@ if(isset($_POST['submit']))
 		exec('rmdir /var/userSites/'.escapeshellarg($siteName).'/');
 		echo "There was an issue uploading your file";
 	}
-		
+
 	//If site name is a domain name:
 	if($_POST['domain'] == 'true')
 	{
@@ -124,7 +124,7 @@ if(isset($_POST['submit']))
 
 	//soft link sites available to sites enabled
 	exec('ln -s /etc/apache2/sites-available/'.$siteName.'.conf /etc/apache2/sites-enabled/'.$siteName.'.conf');
-	
+
 	//restart apache
 	exec('sudo apache2ctl -k graceful');
 }
