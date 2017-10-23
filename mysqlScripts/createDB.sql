@@ -15,7 +15,7 @@ insert into users (user_id, user_name, user_email, user_uid, psswd)
 create table if not exists websites (
 	site_id int(11) not null auto_increment,
 	user_uid varchar(255) not null,
-	created_on date(255) not null,
+	created_on datetime not null,
 	website_name varchar(255) not null,
 	is_domain bit(1) not null,
 	is_enabled bit(1) not null,
