@@ -12,7 +12,7 @@ if(isset($_POST['upload-website'])) {
 	$numErrors = 0;
 	$username = $_SESSION['username']; // get user who created website
 	$siteName = $_POST['siteName']; // get site name
-	$isEnabled = True; // enable it by default
+	$isEnabled = 1; // enable it by default
 	$srcPath = '/var/userSites/'.$siteName.'/'; // source path
 
 	//if type is not an allowable type, exit and report error
@@ -23,7 +23,7 @@ if(isset($_POST['upload-website'])) {
 
 	//If site name is a domain name:
 	if($_POST['domain'] == 'true') {
-		$isDomain = True; // store boolean value
+		$isDomain = 1; // store boolean value
 
 		//check if valid domain
 		$realIP = file_get_contents("http://ipecho.net/plain");
@@ -36,7 +36,7 @@ if(isset($_POST['upload-website'])) {
 		}
 	}
 	else {
-		$isDomain = False; // store boolean value
+		$isDomain = 0; // store boolean value
 	}
 
 	//while checksum fails:
