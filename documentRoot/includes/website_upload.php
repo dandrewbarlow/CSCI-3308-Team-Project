@@ -109,4 +109,6 @@ if(isset($_POST['upload-website'])) {
 	//restart apache
 	exec('sudo apache2ctl -k graceful');
 
+}
+
 ?>
