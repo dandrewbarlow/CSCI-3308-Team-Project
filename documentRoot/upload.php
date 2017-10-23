@@ -29,7 +29,7 @@
 	<br>
 	If you are uploading a .zip make sure that the page you want a visitor to see first is called "index.html" or any other web accessible file extension.<br></p>
 	<!-- Form -->
-	<form action="websiteUpload.php" method="post" enctype="multipart/form-data">
+	<form action="upload.php" method="post" enctype="multipart/form-data">
 		<h3>Select File to Upload:</h3>
 		Site name:&nbsp;&nbsp;<input type="text" name="siteName"><br><br>
 		Is this a domain name?<br>
