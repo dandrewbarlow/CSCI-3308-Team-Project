@@ -17,8 +17,8 @@ create table if not exists websites (
 	user_uid varchar(255) not null,
 	created_on datetime not null,
 	website_name varchar(255) not null,
-	is_domain bit(1) not null,
-	is_enabled bit(1) not null,
+	is_domain int(1) not null,
+	is_enabled int(1) not null,
 	src_path varchar(999) not null,
 	primary key(site_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=7;
