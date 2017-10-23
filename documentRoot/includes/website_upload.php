@@ -3,33 +3,40 @@
 
 // If 'upload-website' button is clicked
 if(isset($_POST['upload-website'])) {
-	//get file name
-	$name = $_FILES['siteFile']['name'];
-	//get file tmpName
-	$tmpName = $_FILES['siteFile']['tmp_name'];
-	//get file type
-	$type = $_FILES['siteFile']['type'];
-	//get file size
-	$size = $_FILES['siteFile']['size'];
-	//get site name
-	$siteName = $_POST['siteName'];
 
-	//if type is not an allowable type:
+	$name = $_FILES['siteFile']['name']; // get file name
+	$tmpName = $_FILES['siteFile']['tmp_name']; // get file tmpName
+	$type = $_FILES['siteFile']['type']; // get file type
+	$size = $_FILES['siteFile']['size']; // get file size
+
+	$numErrors = 0;
+	$username = $_SESSION['username']; // get user who created website
+	$siteName = $_POST['siteName']; // get site name
+	$isEnabled = True; // enable it by default
+	$srcPath = '/var/userSites/'.$siteName.'/'; // source path
+
+	//if type is not an allowable type, exit and report error
 	if(!($type == "application/zip" || $type == "text/html")) {
-		//exit, report error
+		$numErrors++;
 		die($type." Is not a valid file type. Must be either .html or .zip");
 	}
 
 	//If site name is a domain name:
 	if($_POST['domain'] == 'true') {
+		$isDomain = True; // store boolean value
+
 		//check if valid domain
 		$realIP = file_get_contents("http://ipecho.net/plain");
 		$givenIP = gethostbyname($siteName);
 
 		//check that domain points to server IP
 		if($givenIP != $realIP) {
+			$numErrors++;
 			die("That domain does not point to this server");
 		}
+	}
+	else {
+		$isDomain = False; // store boolean value
 	}
 
 	//while checksum fails:
@@ -53,6 +60,7 @@ if(isset($_POST['upload-website'])) {
 				$zip->close();
 			}
 			else {
+				$numErrors++;
 				echo 'unzip failed';
 			}
 		}
@@ -101,6 +109,14 @@ if(isset($_POST['upload-website'])) {
 		fwrite($confFile,'</Directory>');
 		fwrite($confFile,"\n");
 		fclose($confFile);
+	}
+
+	// If we encountered no errors, insert new entry into database
+	if ($numErrors == 0){
+		$date = date("Y-m-d H:i:s");
+		$sql = "INSERT INTO websites (user_uid, created_on, website_name, is_domain, is_enabled, src_path)
+					VALUES ('$username', '$date', '$siteName', '$isDomain', '$isEnabled', '$srcPath')";
+		mysqli_query($conn, $sql);
 	}
 
 	//soft link sites available to sites enabled
