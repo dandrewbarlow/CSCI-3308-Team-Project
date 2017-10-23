@@ -14,5 +14,6 @@ include('login.php'); // Login module
 include('register-user.php'); // New user registration module
 include('reset-password.php'); // Password reset module
 include('logout.php'); // Logout module
+include('website_upload.php'); // Website upload module
 
 ?>
