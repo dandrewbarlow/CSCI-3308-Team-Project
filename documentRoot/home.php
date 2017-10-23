@@ -46,11 +46,14 @@
 				Create a <a href="/register.php">new user</a>
 			</div>
 			<div class="content">
-				<a href="includes/reset_server.php">Reset Password</a>
+				<a href="/reset.php">Reset Password</a>
+			</div>
+			<div class="content">
+				<a href="/upload.php">Upload a website</a>
 			</div>
 		<?php endif ?>
 
-		<a href="/restart.php">restart the server</a>
+		<a href="/includes/restart_server.php">restart the server</a>
 	</div>
 
 	<div class="footer">
