@@ -1,5 +1,11 @@
 <?php
 	session_start();
+
+	// If already logged in, redirect to home page
+	if (isset($_SESSION['username'])) {
+		header('location: home.php');
+	}
+
 	include('includes/server.php')
 ?>
 <!-- Login Page -->
