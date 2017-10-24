@@ -49,7 +49,7 @@ if (isset($_POST['register'])) {
 		mysqli_query($conn, $sql);
 
 		//create user storage directory
-		exec('mkdir /var/data/'.$name');
+		exec('mkdir /var/data/'.$name);
 
 		// Redirect to home
 		$_SESSION['success'] = "You have created a new user";

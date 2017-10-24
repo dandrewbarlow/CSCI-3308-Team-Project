@@ -1,4 +1,5 @@
 <?php
+session_start();
 if (!isset($_SESSION['username'])){
 	$_SESSION['msg'] = "You must log in first";
 	header("location: index.php");
@@ -9,6 +10,7 @@ include('includes/server.php');
 <html>
 <head>
 	<title>Cloud Storage | Pi In The Sky</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
 	<div class="header">
@@ -22,8 +24,8 @@ include('includes/server.php');
 		<form action="storageHandler.php" method="post" enctype="multipart/form-data">
 			Select file to upload:<input type="file" name="uploadFile" id="uploadFile"><br>
 			Or specify a bitTorrent URL:<input type="text" name="TorURL"><br>
-			Is this a private or public file:<input type="radio" name="privacy" value="private">
-			<input type="radio" name="privacy" value="public"><br>
+			Is this a private or public file:<input type="radio" name="privacy" value="private">Private
+			<input type="radio" name="privacy" value="public">Public<br>
 			<input type="submit" name="storage-submit" value="Upload File">
 		</form>
 		<!-- Display uploaded files here -->
