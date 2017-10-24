@@ -21,7 +21,7 @@ include('includes/server.php');
 		You can upload files from your computer, or specify a bit torrent URL for your server to download.<br>
 		You can also specify if you want this file to be available to only you, or everyone.</p>
 		
-		<form action="storageHandler.php" method="post" enctype="multipart/form-data">
+		<form action="includes/storageHandler.php" method="post" enctype="multipart/form-data">
 			Select file to upload:<input type="file" name="uploadFile" id="uploadFile"><br>
 			Or specify a bitTorrent URL:<input type="text" name="TorURL"><br>
 			Is this a private or public file:<input type="radio" name="privacy" value="private">Private
@@ -29,5 +29,38 @@ include('includes/server.php');
 			<input type="submit" name="storage-submit" value="Upload File">
 		</form>
 		<!-- Display uploaded files here -->
+		<h2>Private Files</h2>
+		<?php
+			if($handle = opendir('/var/data/'.$_SESSION['username'].'/')){
+				while (false != ($file = readdir($handle))){
+					if($file != "." && $file != ".."){
+						$fileList .= '<a href="'.$file.'">'.$file.'</a><br>';
+					}
+				}
+				closedir($handle);
+			}else{
+				echo "Error displaying files";
+			}
+		?>
+		<div name="private" style="border:1px">
+			<?php echo $fileList; ?>
+		</div>
+		<h2>Public Files</h2>
+		<?php
+			$fileList = "";
+			if($handle = opendir('/var/data/public/')){
+				while (false != ($file = readdir($handle))){
+					if($file != "." && $file != ".."){
+						$fileList .= '<a href="'.$file.'">'.$file.'</a><br>';
+					}
+				}
+				closedir($handle);
+			}else{
+				echo "Error displaying files";
+			}
+		?>
+		<div name="public" style="border:1px">
+			<ul><?php echo $fileList; ?></ul>
+		</div>		
 	</div>
 </body>

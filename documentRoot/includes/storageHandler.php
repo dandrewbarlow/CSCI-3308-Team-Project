@@ -16,19 +16,23 @@ if(isset($_POST['storage-submit'])){
 			$storageDir = $storageDir.'public/';
 		}else{
 			//NEED TO MAKE USER DIR ON USER REGISTRATION
-			$storageDir = $storateDir.$username.'/';
+			$storageDir = $storageDir.$username.'/';
 		}
 	
 		//check file specifics
 		//move to private or public storage
-		if(move_uploaded_file($tmpName, $storageDir.$name){
+		if(move_uploaded_file($tmpName, $storageDir.$name)){
+			
 			//store metadata in mysql
 		}else{
-			die('file was not uploaded successfully');
+			die('file was not uploaded successfully'.$username.$storagedir);
 		}
 	}
 	//If torrenting file:
 		//get torrent URL
 		//get file data from transmission?
-		//start torrent with transmission
+	//start torrent with transmission
+	// Return to storage page
+	header('location: storage.php');
+}
 ?>
