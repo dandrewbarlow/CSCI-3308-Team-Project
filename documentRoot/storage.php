@@ -24,7 +24,7 @@ include('includes/server.php');
 			Or specify a bitTorrent URL:<input type="text" name="TorURL"><br>
 			Is this a private or public file:<input type="radio" name="privacy" value="private">
 			<input type="radio" name="privacy" value="public"><br>
-			<input type="submit" name="upload-submit" value="Upload File">
+			<input type="submit" name="storage-submit" value="Upload File">
 		</form>
 		<!-- Display uploaded files here -->
 	</div>
