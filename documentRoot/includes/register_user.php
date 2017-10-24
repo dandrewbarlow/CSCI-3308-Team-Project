@@ -48,6 +48,9 @@ if (isset($_POST['register'])) {
 					VALUES ('$name', '$email', '$uid', '$pwd')";
 		mysqli_query($conn, $sql);
 
+		//create user storage directory
+		exec('mkdir /var/data/'.$name');
+
 		// Redirect to home
 		$_SESSION['success'] = "You have created a new user";
 		header('Location: home.php');
