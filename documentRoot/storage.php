@@ -51,7 +51,7 @@ include('includes/server.php');
 			if($handle = opendir('/var/data/public/')){
 				while (false != ($file = readdir($handle))){
 					if($file != "." && $file != ".."){
-						$fileList .= '<a href="'.$file.' download">'.$file.'</a><br>';
+						$fileList .= '<a href="'.$file.'" download>'.$file.'</a><br>';
 					}
 				}
 				closedir($handle);
