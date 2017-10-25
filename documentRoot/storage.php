@@ -34,7 +34,7 @@ include('includes/server.php');
 			if($handle = opendir('/var/data/'.$_SESSION['username'].'/')){
 				while (false != ($file = readdir($handle))){
 					if($file != "." && $file != ".."){
-						$fileList .= '<a href="'.$file.'">'.$file.'</a><br>';
+						$fileList .= '<a href="/data/'.$_SESSION['username'].'/'.$file.'" download>'.$file.'</a><br>';
 					}
 				}
 				closedir($handle);
@@ -51,7 +51,7 @@ include('includes/server.php');
 			if($handle = opendir('/var/data/public/')){
 				while (false != ($file = readdir($handle))){
 					if($file != "." && $file != ".."){
-						$fileList .= '<a href="/var/data/public/'.$file.'" download>'.$file.'</a><br>';
+						$fileList .= '<a href="/data/public/'.$file.'" download>'.$file.'</a><br>';
 					}
 				}
 				closedir($handle);
