@@ -1,5 +1,6 @@
 <?php
 if(isset($_POST['storage-submit'])){
+	session_start();
 	//If uploading a file:
 	if(isset($_FILES['uploadFile'])){
 		$tmpName = $_FILES['uploadFile']['tmp_name'];//get file tmp name
@@ -12,6 +13,10 @@ if(isset($_POST['storage-submit'])){
 		$privacy = $_POST['privacy'];
 
 		$storageDir = '/var/data/';
+		
+		if(!isset($privacy)){
+			die("You must make your file public or private");
+		}
 		if($privacy == 'public'){
 			$storageDir = $storageDir.'public/';
 		}else{
@@ -25,14 +30,15 @@ if(isset($_POST['storage-submit'])){
 			
 			//store metadata in mysql
 		}else{
-			die('file was not uploaded successfully'.$username.$storagedir);
+			die("file upload unsuccessful. Please go back and try again");
 		}
 	}
 	//If torrenting file:
-		//get torrent URL
+	if(isset($_POST['TorURL'])){
+		$URL = $_POST['TorURL'];//get torrent URL
 		//get file data from transmission?
 	//start torrent with transmission
 	// Return to storage page
-	header('location: storage.php');
+	header('location: /storage.php');
 }
 ?>
