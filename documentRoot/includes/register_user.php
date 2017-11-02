@@ -1,6 +1,8 @@
 <!-- Register New User module -->
 <?php
 
+//require login
+
 // Check whether the 'register' button is clicked
 if (isset($_POST['register'])) {
 

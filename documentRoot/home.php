@@ -53,7 +53,8 @@
 			</div>
 		<?php endif ?>
 
-		<a href="/includes/restart_server.php">restart the server</a>
+		<a href="/includes/restart_server.php">restart the server</a><br>
+		<a href="storage.php">Upload and Download Files</a>
 	</div>
 
 	<div class="footer">
