@@ -13,6 +13,7 @@ if(isset($_POST['publicFile'])){
 }else{
 	die("something went horribly wrong!!");
 }
-echo("<p>".$file."</p>");
 
+unlink($file) or die("file could not be deleted");
+header("location: ../storage.php");
 ?>
