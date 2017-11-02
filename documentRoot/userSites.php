@@ -5,17 +5,6 @@ if (!isset($_SESSION['username'])){
 	header('location: index.php');
 }
 include('includes/server.php');
-function disable($site){
-	exec('rm /etc/apache2/sites-enabled/'.$site.'.conf');
-	$query = 'UPDATE websites SET is_enabled = 0 WHERE website_name ='.$site;
-	mysqli_query($conn, $query);
-}
-function enable($site){
-
-}
-function remove($site){
-
-}
 ?>
 <html>
 <head>
@@ -29,15 +18,20 @@ function remove($site){
 	<div class="content">
 		<p>Here you can manage what websites your sever is currently hosting</p>
 		<h2>Enabled Sites</h2>
+		<table>
 		<?php
 			$query = "SELECT website_name FROM websites WHERE is_enabled = 1";
 			$result = mysqli_query($conn, $query);
 			$i =0;
+			$filelist="";
 			while($i = mysqli_fetch_assoc($result)){
-				$filelist.=$i['website_name'].'<button onclick="disable('.$i['websitename'].')">disable</button><br>';
+				$form = '<form method="post" action="includes/siteDisable.php"><input type="hidden" name="siteID" value="'.$i['website_name'].'">';
+				$button = '<input type="submit" value="disable"></form>';
+				$filelist.="<tr><td>".$i['website_name'].'</td><td>'.$form.$button.'</td></tr><br>';
 			}
 			echo $filelist;
 		?>
+		</table>
 		<h2>Available Sites</h2>
 		<?php
 			$query = "SELECT website_name FROM websites WHERE is_enabled = 0";
@@ -45,7 +39,11 @@ function remove($site){
 			$i =0;
 			$filelist = "";
 			while($i = mysqli_fetch_assoc($result)){
-				$filelist.=$i['website_name'].'<br>';
+				$form = '<form method="post" action="includes/siteEnable.php"><input type="hidden" name="siteID" value="'.$i['website_name'].'">';
+				$button = '<input type="submit" value="Enable"></form>';
+				$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$i['website_name'].'">';
+				$button2 = '<input type="submit" value="Delete"></form>';
+				$filelist.="<tr><td>".$i['website_name'].'</td><td>'.$form.$button.'</td></tr><br>';
 			}
 			echo $filelist;
 		?>
