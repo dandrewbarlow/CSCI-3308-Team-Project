@@ -31,6 +31,7 @@ include('includes/server.php');
 		<!-- Display uploaded files here -->
 		<h2>Private Files</h2>
 		<?php
+			$fileList = "";
 			if($handle = opendir('/var/data/'.$_SESSION['username'].'/')){
 				while (false != ($file = readdir($handle))){
 					if($file != "." && $file != ".."){
