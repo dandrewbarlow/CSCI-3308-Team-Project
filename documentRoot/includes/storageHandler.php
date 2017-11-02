@@ -1,4 +1,5 @@
 <?php
+include('requireLogin.php');
 if(isset($_POST['storage-submit'])){
 	session_start();
 	$numErrors = 0;

@@ -1,6 +1,7 @@
 <!-- Website Upload module -->
 <?php
-
+include('requireLogin.php');
+include('dbconnect.php');
 // If 'upload-website' button is clicked
 if(isset($_POST['upload-website'])) {
 

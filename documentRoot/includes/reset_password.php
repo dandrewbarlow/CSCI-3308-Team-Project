@@ -1,6 +1,7 @@
 <!-- Password Reset module -->
 <?php
-
+include('dbconnect.php');
+include('requireLogin.php');
 // Check if 'reset-password' button is clicked
 if (isset($_POST['reset-password'])) {
 

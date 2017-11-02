@@ -8,7 +8,7 @@
 	}
 
 	// Includes new user registration module
-	include('includes/server.php');
+	include('includes/requireLogin.php');
 ?>
 <!-- Webpage for registering new user -->
 <!DOCTYPE html>
@@ -30,7 +30,7 @@
 
 			<?php include('includes/errors.php') ?>
 
-			<form class="login" action="register.php" method="post">
+			<form class="login" action="includes/register_user.php" method="post">
 				<div class="input-group">
 					<label>Name</label>&nbsp;
 					<input type="text" name="name" value="">

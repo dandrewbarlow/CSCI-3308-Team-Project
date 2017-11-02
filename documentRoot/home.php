@@ -8,7 +8,6 @@
 	}
 
 	// Includes logout module.
-	include('includes/server.php');
 
 ?>
 <!-- Home page for a logged in user -->
@@ -58,7 +57,7 @@
 	</div>
 
 	<div class="footer">
-		<form action="home.php" method="post">
+		<form action="includes/logout.php" method="post">
 			<button type="submit" name="logout" class="btn btn-danger">Logout</button>
 		</form>
 	</div>

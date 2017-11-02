@@ -4,7 +4,8 @@ if(!isset($_SESSION['username'])){
 	$_SESSION['msg']="You must log in first!";
 	header("location: index.php");
 }
-include('server.php');
+include('requireLogin.php');
+include('dbconnect.php');
 
 function delete_files($target) {
 	if(is_dir($target)){
