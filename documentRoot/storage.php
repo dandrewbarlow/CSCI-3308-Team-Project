@@ -34,7 +34,9 @@ include('includes/server.php');
 			if($handle = opendir('/var/data/'.$_SESSION['username'].'/')){
 				while (false != ($file = readdir($handle))){
 					if($file != "." && $file != ".."){
-						$fileList .= '<a href="/data/'.$_SESSION['username'].'/'.$file.'" download>'.$file.'</a><br>';
+						$deletebutton = '<form action="includes/storageDelete.php" method="post" enctype="multipart/form-data">';
+						$deletebutton2='<input type="hidden" name="privateFile" value="'.$file.'"><input type="submit" value="Delete"></form>';
+						$fileList .= '<a href="/data/'.$_SESSION['username'].'/'.$file.'" download>'.$file.'</a>'.$deletebutton.$deletebutton2.'<br>';
 					}
 				}
 				closedir($handle);
