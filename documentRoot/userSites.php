@@ -49,6 +49,7 @@ include('includes/server.php');
 			echo $filelist;
 		?>
 		</table>
+		<a href="upload.php">Create a site</a>
 	</div>
 </body>
 </html>

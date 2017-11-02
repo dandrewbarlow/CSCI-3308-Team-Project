@@ -25,5 +25,6 @@ unlink('/etc/apache2/sites-available/'.$siteName.'.conf') or die("unable to dele
 
 $sqlquery = 'DELETE FROM websites WHERE website_name="'.$siteName.'"';
 mysqli_query($conn, $sqlquery) or die("unable to remove DB row");
+exec('sudo apache2ctl -k graceful');
 header("location: ../userSites.php");
 ?>

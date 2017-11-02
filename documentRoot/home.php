@@ -49,7 +49,7 @@
 				<a href="/reset.php">Reset Password</a>
 			</div>
 			<div class="content">
-				<a href="/upload.php">Upload a website</a>
+				<a href="/userSites.php">Manage Your Websites</a>
 			</div>
 		<?php endif ?>
 
