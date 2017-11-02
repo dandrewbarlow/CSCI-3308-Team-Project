@@ -33,6 +33,7 @@ include('includes/server.php');
 		?>
 		</table>
 		<h2>Available Sites</h2>
+		<table>
 		<?php
 			$query = "SELECT website_name FROM websites WHERE is_enabled = 0";
 			$result = mysqli_query($conn, $query);
@@ -43,10 +44,11 @@ include('includes/server.php');
 				$button = '<input type="submit" value="Enable"></form>';
 				$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$i['website_name'].'">';
 				$button2 = '<input type="submit" value="Delete"></form>';
-				$filelist.="<tr><td>".$i['website_name'].'</td><td>'.$form.$button.'</td></tr><br>';
+				$filelist.="<tr><td>".$i['website_name'].'</td><td>'.$form.$button.'</td><td>'.$form2.$button2.'</td></tr><br>';
 			}
 			echo $filelist;
 		?>
+		</table>
 	</div>
 </body>
 </html>
