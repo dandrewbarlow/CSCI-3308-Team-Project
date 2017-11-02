@@ -8,7 +8,7 @@ include('includes/server.php');
 ?>
 <html>
 <head>
-	<title>Cloud Storage | Pi In The Sky</title>
+	<title>Hosted Sites | Pi In The Sky</title>
 	<link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
