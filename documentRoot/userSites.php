@@ -53,16 +53,16 @@ include('includes/dbconnect.php');
 		<h2>Available Sites</h2>
 		<table align="center">
 		<?php
-			// $query = ""
-			// if ($_SESSION['superuser'] == 1) {
-			// 	$query = "SELECT * FROM websites WHERE is_enabled = 0";
-			// }
-			// else {
-			// 	$username = $_SESSION['username'];
-			// 	$query = "SELECT * FROM websites WHERE (is_enabled = 0 AND user_uid='$username')";
-			// }
-			// $result = mysqli_query($conn, $query);
-			// $resultCheck = mysqli_num_rows($result);
+			$query = ""
+			if ($_SESSION['superuser'] == 1) {
+				$query = "SELECT * FROM websites WHERE is_enabled = 0";
+			}
+			else {
+				$username = $_SESSION['username'];
+				$query = "SELECT * FROM websites WHERE (is_enabled = 0 AND user_uid='$username')";
+			}
+			$result = mysqli_query($conn, $query);
+			$resultCheck = mysqli_num_rows($result);
 			// if ($resultCheck == 0) {
 			// 	echo "There no other available sites right now.";
 			// }
