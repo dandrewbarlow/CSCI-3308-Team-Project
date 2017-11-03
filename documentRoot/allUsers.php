@@ -33,17 +33,14 @@
 		<div class="content">
 
 			<h2>Superusers</h2>
-			<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> </tr>
 			<table>
+				<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> </tr>
 				<?php
 					$query = "SELECT * FROM users WHERE superuser = 1";
 					$result = mysqli_query($conn, $query);
-					while($row = mysqli_fetch_array($result)){
+					while($row = mysqli_fetch_array($result, MYSQLI_NUM)){
 					   echo "<tr>";
-						   echo "<td>" . $row['user_id'] . "</td>";
-						   echo "<td>" . $row['user_name'] . "</td>";
-						   echo "<td>" . $row['user_email'] . "</td>";
-						   echo "<td>" . $row['user_uid'] . "</td>";
+					   echo "<td>$row[0]</td> <td>$row[1]</td> <td>$row[2]</td> <td>$row[3]</td>";
 					   echo "</tr>";
 				   }
 				?>
@@ -52,17 +49,14 @@
 			<br><br><br><br>
 
 			<h2>Normal Users</h2>
-			<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> </tr>
 			<table>
+				<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> </tr>
 				<?php
 					$query = "SELECT * FROM users WHERE superuser = 0";
 					$result = mysqli_query($conn, $query);
-					while($row = mysqli_fetch_array($result)){
+					while($row = mysqli_fetch_array($result, MYSQLI_NUM)){
 					   echo "<tr>";
-						   echo "<td>" . $row['user_id'] . "</td>";
-						   echo "<td>" . $row['user_name'] . "</td>";
-						   echo "<td>" . $row['user_email'] . "</td>";
-						   echo "<td>" . $row['user_uid'] . "</td>";
+					   echo "<td>$row[0]</td> <td>$row[1]</td> <td>$row[2]</td> <td>$row[3]</td>";
 					   echo "</tr>";
 				   }
 				?>
