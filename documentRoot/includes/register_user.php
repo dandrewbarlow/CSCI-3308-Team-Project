@@ -63,6 +63,10 @@ if (isset($_POST['register'])) {
 		$_SESSION['msg'] = "You have created a new user";
 		header('Location: ../home.php');
 	}
+    else {
+		$_SESSION['msg'] = "Please fix the errors";
+        header('Location: ../register.php');
+    }
 }
 
 ?>
