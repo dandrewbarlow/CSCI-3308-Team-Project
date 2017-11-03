@@ -1,8 +1,6 @@
 <!-- Register New User module -->
 <?php
-include('requireLogin.php');
-//require login
-
+include('requireSuperuser.php');
 
 include('dbconnect.php');
 // Check whether the 'register' button is clicked
