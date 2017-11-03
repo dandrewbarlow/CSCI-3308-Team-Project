@@ -57,6 +57,7 @@
 					while($row = mysqli_fetch_array($result, MYSQLI_NUM)){
 					   echo "<tr>";
 					   echo "<td>$row[0]</td> <td>$row[1]</td> <td>$row[2]</td> <td>$row[3]</td>";
+					   echo "<td><input type=\"submit\" class=\"button\" name=\"".$row[0]."\"value=\"Delete\"/></td>";
 					   echo "</tr>";
 				   }
 				?>
@@ -64,5 +65,17 @@
 
 		</div>
 
+		<script>
+			$(document).ready(function(){
+				$('.button').click(function(){
+					var clickBtnName = $(this).attr('name');
+					var ajaxurl = './includes/userDeleteHandler.php';
+					var data = {'id': clickBtnName};
+					$.post(ajaxurl, data, function(response) {
+						window.location.href="./allUsers.php";
+					});
+				});
+			});
+		</script>
 	</body>
 </html>
