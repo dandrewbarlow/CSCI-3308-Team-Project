@@ -33,7 +33,7 @@ include('includes/dbconnect.php');
 			$result = mysqli_query($conn, $query);
 			//$i =0;
 			$filelist="";
-			while($row = mysqli_fetch_array($result, MYSQLI_NUM)){
+			while($row = mysqli_fetch_array($result)){
 				$form = '<form method="post" action="includes/siteDisable.php"><input type="hidden" name="siteID" value="'.$row['website_name'].'">';
 				$button = '<input type="submit" value="disable"></form>';
 				$filelist .= "<tr><td>".$row['site_id'].'</td>';
