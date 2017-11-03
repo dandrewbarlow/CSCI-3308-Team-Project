@@ -42,6 +42,9 @@
 					while($row = mysqli_fetch_array($result, MYSQLI_NUM)){
 					   echo "<tr>";
 					   echo "<td>$row[0]</td> <td>$row[1]</td> <td>$row[2]</td> <td>$row[3]</td>";
+					   if ($row[3] != $_SESSION['username']) {
+						   echo "<td><input type=\"submit\" class=\"button\" name=\"".$row[0]."\"value=\"Delete\"/></td>";
+					   }
 					   echo "</tr>";
 				   }
 				?>
