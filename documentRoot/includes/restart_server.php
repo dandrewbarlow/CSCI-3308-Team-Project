@@ -1,5 +1,6 @@
 <!-- Server Restart module -->
 <?php
+
 session_start();
 if(!isset($_SESSION['username'])){
 	$_SESSION['msg']="YOU MUST LOG IN FIRST";
@@ -8,4 +9,5 @@ if(!isset($_SESSION['username'])){
 	// Restart server
 	exec('sudo /sbin/reboot');
 }
+
 ?>
