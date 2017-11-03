@@ -32,7 +32,7 @@
 	<form action="includes/website_upload.php" method="post" enctype="multipart/form-data">
 		<?php
 			if (isset($_SESSION['username'])) {
-				echo "Username: <input type=\"text\" name=\"username\" value=".$_SESSION['username']." disabled><br><br>"
+				echo "Username: <input type=\"text\" name=\"username\" value=".$_SESSION['username']." disabled><br><br>";
 			}
 		?>
 		<h3>Select File to Upload:</h3>
