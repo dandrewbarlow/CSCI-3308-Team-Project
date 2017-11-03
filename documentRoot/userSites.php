@@ -47,17 +47,26 @@ include('includes/dbconnect.php');
 		</table>
 		<h2>Available Sites</h2>
 		<table align="center">
+			<tr>
+				<th>Id</th> <th>Website Name</th> <th>Created By</th> <th>Created On</th> <th>Is Domain?</th> <th>Enable?</th>
+				<th>Delete?</th>
+			</tr>
 		<?php
-			$query = "SELECT website_name FROM websites WHERE is_enabled = 0";
+			$query = "SELECT * FROM websites WHERE is_enabled = 0";
 			$result = mysqli_query($conn, $query);
 			$i =0;
 			$filelist = "";
-			while($i = mysqli_fetch_assoc($result)){
-				$form = '<form method="post" action="includes/siteEnable.php"><input type="hidden" name="siteID" value="'.$i['website_name'].'">';
+			while($row = mysqli_fetch_array($result)){
+				$form = '<form method="post" action="includes/siteEnable.php"><input type="hidden" name="siteID" value="'.$i['site_id'].'">';
 				$button = '<input type="submit" value="Enable"></form>';
-				$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$i['website_name'].'">';
+				$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$i['site_id'].'">';
 				$button2 = '<input type="submit" value="Delete"></form>';
-				$filelist.="<tr><td>".$i['website_name'].'</td><td>'.$form.$button.'</td><td>'.$form2.$button2.'</td></tr><br>';
+				$filelist .= "<tr><td>".$row['site_id'].'</td>';
+				$filelist .= "<td>".$row['website_name'].'</td>';
+				$filelist .= "<td>".$row['user_uid'].'</td>';
+				$filelist .= "<td>".$row['created_on'].'</td>';
+				$filelist .= "<td>".$row['is_domain'].'</td>';
+				$filelist .= '<td>'.$form.$button.'</td><td>'.$form2.$button2.'</td></tr><br>';
 			}
 			echo $filelist;
 		?>
