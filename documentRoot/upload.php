@@ -9,7 +9,6 @@
 
 	// Includes logout module.
 	include('includes/requireLogin.php');
-	include('includes/website_upload.php');
 ?>
 <!-- Website Upload Page -->
 <!DOCTYPE html>
@@ -30,7 +29,7 @@
 	<br>
 	If you are uploading a .zip make sure that the page you want a visitor to see first is called "index.html" or any other web accessible file extension.<br></p>
 	<!-- Form -->
-	<form action="upload.php" method="post" enctype="multipart/form-data">
+	<form action="includes/website_upload.php" method="post" enctype="multipart/form-data">
 		<?php
 			if (isset($_SESSION['username'])) {
 				echo "Username: <input type=\"text\" name=\"username\" value=".$_SESSION['username']." disabled><br><br>";

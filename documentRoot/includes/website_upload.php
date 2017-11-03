@@ -116,7 +116,6 @@ if(isset($_POST['upload-website'])) {
 	if ($numErrors == 0){
 		$date = date("Y-m-d H:i:s");
 		$username = $_SESSION['username'];
-		echo "$username";
 		$sql = "INSERT INTO websites (user_uid, created_on, website_name, is_domain, is_enabled, src_path)
 					VALUES ('$username', '$date', '$siteName', '$isDomain', '$isEnabled', '$srcPath')";
 		mysqli_query($conn, $sql);
@@ -127,7 +126,7 @@ if(isset($_POST['upload-website'])) {
 
 	//restart apache
 	exec('sudo apache2ctl -k graceful');
-	//header('location: ../userSites.php');
+	header('location: ../userSites.php');
 
 }
 
