@@ -92,11 +92,11 @@ body {
     width:100%;
 }
 
-table {
+.content table {
     border-collapse: collapse;
 }
 
-td, th {
+.content td, th {
     border: 1px solid black;
     text-align: left;
     padding: 8px;
