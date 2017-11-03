@@ -8,7 +8,7 @@
 	}
 
 	// Includes password reset module
-	include('includes/server.php');
+	include('includes/requireLogin.php');
 ?>
 <!-- Webpage for resetting password -->
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
 
 			<?php include('includes/errors.php') ?>
 
-			<form class="login" action="reset.php" method="post">
+			<form class="login" action="includes/reset_password.php" method="post">
 				<div class="input-group">
 					<label>Old Password</label>&nbsp;
 					<input type="password" name="password_old" value="">

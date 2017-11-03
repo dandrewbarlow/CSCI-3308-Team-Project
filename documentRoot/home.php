@@ -7,8 +7,6 @@
 		header('location: index.php');
 	}
 
-	// Includes logout module.
-	include('includes/server.php');
 
 ?>
 <!-- Home page for a logged in user -->
@@ -40,24 +38,24 @@
 		<?php  if (isset($_SESSION['username'])) : ?>
 			<div class="content">
 				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-				Enter <a href="/owncloud" target="_blank">OwnCloud</a>
 			</div>
 			<div class="content">
-				Create a <a href="/register.php">new user</a>
+				<a href="/register.php">Create new user</a>
 			</div>
 			<div class="content">
 				<a href="/reset.php">Reset Password</a>
 			</div>
 			<div class="content">
-				<a href="/upload.php">Upload a website</a>
+				<a href="/userSites.php">Manage Your Websites</a>
 			</div>
 		<?php endif ?>
 
-		<a href="/includes/restart_server.php">restart the server</a>
+		<a href="/includes/restart_server.php">restart the server</a><br>
+		<a href="storage.php">Upload and Download Files</a>
 	</div>
 
 	<div class="footer">
-		<form action="home.php" method="post">
+		<form action="includes/logout.php" method="post">
 			<button type="submit" name="logout" class="btn btn-danger">Logout</button>
 		</form>
 	</div>

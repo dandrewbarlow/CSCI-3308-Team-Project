@@ -1,6 +1,10 @@
 <!-- Register New User module -->
 <?php
+include('requireLogin.php');
+//require login
 
+
+include('dbconnect.php');
 // Check whether the 'register' button is clicked
 if (isset($_POST['register'])) {
 
@@ -48,9 +52,12 @@ if (isset($_POST['register'])) {
 					VALUES ('$name', '$email', '$uid', '$pwd')";
 		mysqli_query($conn, $sql);
 
+		//create user storage directory
+		exec('mkdir /var/data/'.$name);
+
 		// Redirect to home
 		$_SESSION['success'] = "You have created a new user";
-		header('Location: home.php');
+		header('../Location: home.php');
 	}
 }
 

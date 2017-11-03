@@ -1,13 +1,13 @@
 <!-- Server Restart module -->
 <?php
 
-	// Check whether the user is logged in
-	if (!isset($_SESSION['username'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: index.php');
-	}
+session_start();
+if(!isset($_SESSION['username'])){
+	$_SESSION['msg']="YOU MUST LOG IN FIRST";
+	header('location: ../index.php');
+}else{
 	// Restart server
-	else {
-		exec('sudo /sbin/reboot');
-	}
+	exec('sudo /sbin/reboot');
+}
+
 ?>

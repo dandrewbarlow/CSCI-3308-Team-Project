@@ -1,6 +1,7 @@
 <!-- Website Upload module -->
 <?php
-
+include('requireLogin.php');
+include('dbconnect.php');
 // If 'upload-website' button is clicked
 if(isset($_POST['upload-website'])) {
 
@@ -124,6 +125,7 @@ if(isset($_POST['upload-website'])) {
 
 	//restart apache
 	exec('sudo apache2ctl -k graceful');
+	header('location: ../userSites.php');
 
 }
 

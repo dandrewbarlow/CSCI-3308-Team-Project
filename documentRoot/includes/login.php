@@ -1,6 +1,6 @@
 <!-- Login module -->
 <?php
-
+include('dbconnect.php');
 // Check whether 'login' button is pressed
 if (isset($_POST['login'])) {
 

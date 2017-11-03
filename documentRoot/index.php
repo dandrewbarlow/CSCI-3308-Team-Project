@@ -6,7 +6,7 @@
 		header('location: home.php');
 	}
 
-	include('includes/server.php')
+	include('includes/login.php')
 ?>
 <!-- Login Page -->
 <!DOCTYPE html>
