@@ -22,6 +22,7 @@ include('includes/dbconnect.php');
 		<table align="center">
 			<tr> <th>Id</th> <th>Website Name</th> <th>Created By</th> <th>Created On</th> <th>Is Domain?</th> <th>Disable?</th> </tr>
 		<?php
+			$query = "";
 			if ($_SESSION['superuser'] == 1) {
 				$query = "SELECT * FROM websites WHERE is_enabled = 1";
 			}
