@@ -30,7 +30,7 @@ if (isset($_POST['login'])) {
             // Get user privileges
             $row = mysqli_fetch_array($result);
             $_SESSION['superuser'] = $row['superuser'];
-			$_SESSION['username'] = $uid;
+			$_SESSION['username'] = $row['user_uid'];
 			$_SESSION['msg'] = "You are now logged in";
 			header('Location: home.php');
 		}
