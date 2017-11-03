@@ -14,6 +14,12 @@ if (isset($_POST['register'])) {
 	$uid = mysqli_real_escape_string($conn, $_POST['username']);
 	$pwd1 = mysqli_real_escape_string($conn, $_POST['password1']);
 	$pwd2 = mysqli_real_escape_string($conn, $_POST['password2']);
+    if ($_POST['superuser'] == 'true') {
+        $superuser = 1;
+    }
+    else {
+        $superuser = 0;
+    }
 
 	// HANDLE ERRORS
 	// Check if inputs are empty
@@ -46,8 +52,8 @@ if (isset($_POST['register'])) {
     // If there are no errors, insert new row into table
 	if(count($errors) == 0) {
 		$pwd = md5($pwd1); // Encrypt password
-		$sql = "INSERT INTO users (user_name, user_email, user_uid, psswd)
-					VALUES ('$name', '$email', '$uid', '$pwd')";
+		$sql = "INSERT INTO users (user_name, user_email, user_uid, psswd, superuser)
+					VALUES ('$name', '$email', '$uid', '$pwd', '$superuser')";
 		mysqli_query($conn, $sql);
 
 		//create user storage directory

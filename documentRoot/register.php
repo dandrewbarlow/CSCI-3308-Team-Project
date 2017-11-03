@@ -48,6 +48,9 @@
 					<input type="text" name="username" value="">
 				</div>
 				<div class="input-group">
+					<label>Is the new user also a superuser?</label>&nbsp;<input type="radio" name="superuser" value="true">Yes
+				</div>
+				<div class="input-group">
 					<label>Password</label>&nbsp;
 					<input type="password" name="password1" value="">
 				</div>
