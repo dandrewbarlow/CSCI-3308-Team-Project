@@ -33,7 +33,7 @@
 		<div class="content">
 
 			<h2>Superusers</h2>
-			<table>
+			<table align="center">
 				<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> </tr>
 				<?php
 					$query = "SELECT * FROM users WHERE superuser = 1";
@@ -49,7 +49,7 @@
 			<br><br><br><br>
 
 			<h2>Normal Users</h2>
-			<table>
+			<table align="center">
 				<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> </tr>
 				<?php
 					$query = "SELECT * FROM users WHERE superuser = 0";
