@@ -27,8 +27,11 @@ if (isset($_POST['login'])) {
 		}
         // Else set the session to the user_uid and redirect to 'home.php'
 		else {
+            // Get user privileges
+            $row = mysqli_fetch_array($result);
+            $_SESSION['superuser'] = $row['superuser'];
 			$_SESSION['username'] = $uid;
-			$_SESSION['success'] = "You are now logged in";
+			$_SESSION['msg'] = "You are now logged in";
 			header('Location: home.php');
 		}
 	}
