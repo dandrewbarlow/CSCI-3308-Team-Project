@@ -60,7 +60,7 @@ if (isset($_POST['register'])) {
 		exec('mkdir /var/data/'.$uid);
 
 		// Redirect to home
-		$_SESSION['success'] = "You have created a new user";
+		$_SESSION['msg'] = "You have created a new user";
 		header('Location: ../home.php');
 	}
 }

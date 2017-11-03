@@ -42,6 +42,9 @@
 				<div class="content">
 					<a href="/register.php">Create new user</a>
 				</div>
+				<div class="content">
+					<a href="/allUsers.php">See all users</a>
+				</div>
 			<?php endif ?>
 			<div class="content">
 				<a href="/reset.php">Reset Password</a>
