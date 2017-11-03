@@ -7,7 +7,6 @@
 		header('location: index.php');
 	}
 
-	// Includes logout module.
 
 ?>
 <!-- Home page for a logged in user -->

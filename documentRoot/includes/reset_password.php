@@ -1,5 +1,6 @@
 <!-- Password Reset module -->
 <?php
+session_start();
 include('dbconnect.php');
 include('requireLogin.php');
 // Check if 'reset-password' button is clicked
@@ -27,6 +28,7 @@ if (isset($_POST['reset-password'])) {
 	// Check if old password is correct
 	if (count($errors) == 0) {
 		$pwd = md5($pwd_old); // Encrypt password
+		$sessionUser = $_SESSION['username'];
 		$sql = "SELECT * FROM users WHERE user_uid='$sessionUser' AND psswd='$pwd'";
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
@@ -43,15 +45,15 @@ if (isset($_POST['reset-password'])) {
     // If there are no errors, update the row in the database
 	if(count($errors) == 0) {
 		$pwd = md5($pwd1); // Encrypt password
-		$sql = "UPDATE users
-				SET psswd='$pwd'
-				WHERE user_uid='$sessionUser'";
+		$sql = 'UPDATE users
+				SET psswd="'.$pwd.'"
+				WHERE user_uid="'.$_SESSION['username'].'"';
 		mysqli_query($conn, $sql);
 
 		// Redirect to home
 		$_SESSION['success'] = "You have updated your password";
         $_SESSION['username'] = $sessionUser;
-		header('Location: home.php');
+		header('Location: ../home.php');
 	}
 }
 
