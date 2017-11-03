@@ -23,13 +23,13 @@ include('includes/dbconnect.php');
 			<tr> <th>Id</th> <th>Website Name</th> <th>Created By</th> <th>Created On</th> <th>Is Domain?</th> <th>Disable?</th> </tr>
 		<?php
 			$query = "";
-			// if ($_SESSION['superuser'] == 1) {
-			//	  $query .= "SELECT * FROM websites WHERE is_enabled = 1"; // this works
-			// }
-			// else {
-			 	$username = $_SESSION['username'];
-			 	$query .= "SELECT * FROM websites WHERE (is_enabled = 1 AND user_uid = '$username')"
-			// }
+			if ($_SESSION['superuser'] == 1) {
+				$query .= "SELECT * FROM websites WHERE is_enabled = 1";
+			}
+			else {
+				$username = $_SESSION['username'];
+				$query .= "SELECT * FROM websites WHERE (is_enabled = 1 AND user_uid = '$username')";
+			}
 			$result = mysqli_query($conn, $query);
 			$filelist="";
 			while($row = mysqli_fetch_array($result)){
