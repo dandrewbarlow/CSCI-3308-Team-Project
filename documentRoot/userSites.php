@@ -24,23 +24,22 @@ include('includes/dbconnect.php');
 		<?php
 			$query = "";
 			// if ($_SESSION['superuser'] == 1) {
-				$query .= "SELECT * FROM websites WHERE is_enabled = 1";
+			//	  $query .= "SELECT * FROM websites WHERE is_enabled = 1"; // this works
 			// }
 			// else {
-			// 	$username = $_SESSION['username'];
-			// 	$query .= "SELECT * FROM websites WHERE (is_enabled = 1 AND user_uid = '$username')"
+			 	$username = $_SESSION['username'];
+			 	$query .= "SELECT * FROM websites WHERE (is_enabled = 1 AND user_uid = '$username')"
 			// }
 			$result = mysqli_query($conn, $query);
-			//$i =0;
 			$filelist="";
 			while($row = mysqli_fetch_array($result)){
 				$form = '<form method="post" action="includes/siteDisable.php"><input type="hidden" name="siteID" value="'.$row['website_name'].'">';
 				$button = '<input type="submit" value="disable"></form>';
 				$filelist .= "<tr><td>".$row['site_id'].'</td>';
-				$filelist .= "<tr><td>".$row['website_name'].'</td>';
-				$filelist .= "<tr><td>".$row['user_uid'].'</td>';
-				$filelist .= "<tr><td>".$row['created_on'].'</td>';
-				$filelist .= "<tr><td>".$row['is_domain'].'</td>';
+				$filelist .= "<td>".$row['website_name'].'</td>';
+				$filelist .= "<td>".$row['user_uid'].'</td>';
+				$filelist .= "<td>".$row['created_on'].'</td>';
+				$filelist .= "<td>".$row['is_domain'].'</td>';
 				$filelist .= '<td>'.$form.$button.'</td></tr><br>';
 			}
 			echo $filelist;
