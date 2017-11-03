@@ -5,6 +5,13 @@ include('dbconnect.php');
 
 $id = $_REQUEST['id'];
 
+// Get username
+$queryUsername = "SELECT * FROM users WHERE user_id='$id'";
+$result = mysqli_query($conn, $queryUsername);
+$row = mysqli_fetch_array($result);
+$user_uid = $row['user_uid'];
+
+// Delete from database
 $queryDelete = "DELETE FROM users WHERE user_id='$id'";
 mysqli_query($conn, $queryDelete);
 
@@ -20,7 +27,7 @@ function delete_files($target) {
 		unlink( $target );
 	 }
 }
-$path = '/var/data/'.$_SESSION['username'];
+$path = "/var/data/".$user_uid;
 delete_files($path);
 
 $_SESSION['msg'] = "User successfully deleted from database. Note that they may still be logged in.";
