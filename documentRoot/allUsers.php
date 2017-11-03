@@ -27,15 +27,12 @@
 	<body>
 		<div class="header">
 			<h1>Pi In the Sky</h1>
-			<h2>All Users</h2>
 		</div>
-		<div class="extra-space"></div>
-
 		<div class="content">
-
+			<a href="/home.php">Go back home</a><br><br>
 			<h2>Superusers</h2>
 			<table align="center">
-				<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> </tr>
+				<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> <th>Delete?</th> </tr>
 				<?php
 					$query = "SELECT * FROM users WHERE superuser = 1";
 					$result = mysqli_query($conn, $query);
@@ -49,12 +46,12 @@
 				   }
 				?>
 			</table>
-
+			<p><b>*You cannot delete yourself</b></p>
 			<br><br><br><br>
 
 			<h2>Normal Users</h2>
 			<table align="center">
-				<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> </tr>
+				<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> <th>Delete?</th> </tr>
 				<?php
 					$query = "SELECT * FROM users WHERE superuser = 0";
 					$result = mysqli_query($conn, $query);
