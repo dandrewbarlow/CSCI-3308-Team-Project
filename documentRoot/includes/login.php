@@ -24,8 +24,6 @@ if (isset($_POST['login'])) {
 		// If username doesn't exist
 		if ($resultCheck < 1) {
             array_push($errors, "Incorrect username or password.");
-    		$_SESSION['msg'] = "Please fix the errors";
-            header('Location: ../index.php');
 		}
         // Else set the session to the user_uid and redirect to 'home.php'
 		else {

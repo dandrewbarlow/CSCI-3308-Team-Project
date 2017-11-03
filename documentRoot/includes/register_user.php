@@ -65,7 +65,6 @@ if (isset($_POST['register'])) {
 	}
     else {
 		$_SESSION['msg'] = "Please fix the errors";
-        header('Location: ../register.php');
     }
 }
 
