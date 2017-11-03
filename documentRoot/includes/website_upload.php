@@ -11,7 +11,7 @@ if(isset($_POST['upload-website'])) {
 	$size = $_FILES['siteFile']['size']; // get file size
 
 	$numErrors = 0;
-	$username = $_POST['username']; // get user who created website
+	$username = $_SESSION['username']; // get user who created website
 	$siteName = $_POST['siteName']; // get site name
 	$isEnabled = 1; // enable it by default
 	$srcPath = '/var/userSites/'.$siteName.'/'; // source path
@@ -115,6 +115,7 @@ if(isset($_POST['upload-website'])) {
 	// If we encountered no errors, insert new entry into database
 	if ($numErrors == 0){
 		$date = date("Y-m-d H:i:s");
+		$username = $_SESSION['username'];
 		$sql = "INSERT INTO websites (user_uid, created_on, website_name, is_domain, is_enabled, src_path)
 					VALUES ('$username', '$date', '$siteName', '$isDomain', '$isEnabled', '$srcPath')";
 		mysqli_query($conn, $sql);
