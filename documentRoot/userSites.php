@@ -54,12 +54,11 @@ include('includes/dbconnect.php');
 		<?php
 			$query = "SELECT * FROM websites WHERE is_enabled = 0";
 			$result = mysqli_query($conn, $query);
-			$i =0;
 			$filelist = "";
 			while($row = mysqli_fetch_array($result)){
-				$form = '<form method="post" action="includes/siteEnable.php"><input type="hidden" name="siteID" value="'.$i['site_id'].'">';
+				$form = '<form method="post" action="includes/siteEnable.php"><input type="hidden" name="siteID" value="'.$row['site_id'].'">';
 				$button = '<input type="submit" value="Enable"></form>';
-				$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$i['site_id'].'">';
+				$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$row['site_id'].'">';
 				$button2 = '<input type="submit" value="Delete"></form>';
 				$filelist .= "<tr><td>".$row['site_id'].'</td>';
 				$filelist .= "<td>".$row['website_name'].'</td>';
