@@ -42,6 +42,9 @@
 					   if ($row[3] != $_SESSION['username']) {
 						   echo "<td><input type=\"submit\" class=\"button\" name=\"".$row[0]."\"value=\"Delete\"/></td>";
 					   }
+					   else {
+						   echo "<td></td>";
+					   }
 					   echo "</tr>";
 				   }
 				?>
