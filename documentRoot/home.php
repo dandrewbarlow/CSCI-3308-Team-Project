@@ -43,18 +43,17 @@
 					<a href="/register.php">Create new user</a>
 				</div>
 				<div class="content">
-					<a href="/allUsers.php">See all users</a>
-				</div>
+					<a href="/allUsers.php">Manage users</a>
+				</div><br>
 			<?php endif ?>
 			<div class="content">
-				<a href="/reset.php">Reset Password</a>
-			</div>
+				<a href="/reset.php">Reset password</a>
+			</div><br>
 			<div class="content">
-				<a href="/userSites.php">Manage Your Websites</a>
-			</div>
+				<a href="/userSites.php">Manage websites</a>
+			</div><br>
 		<?php endif ?>
-
-		<a href="/includes/restart_server.php">restart the server</a><br>
+		<a href="/includes/restart_server.php">Restart the server</a><br>
 		<a href="storage.php">Upload and Download Files</a>
 	</div>
 
