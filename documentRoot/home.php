@@ -38,10 +38,9 @@
 		<?php  if (isset($_SESSION['username'])) : ?>
 			<div class="content">
 				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
-				Enter <a href="/owncloud" target="_blank">OwnCloud</a>
 			</div>
 			<div class="content">
-				Create a <a href="/register.php">new user</a>
+				<a href="/register.php">Create new user</a>
 			</div>
 			<div class="content">
 				<a href="/reset.php">Reset Password</a>
