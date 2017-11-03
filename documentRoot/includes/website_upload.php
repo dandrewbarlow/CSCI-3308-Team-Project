@@ -11,7 +11,7 @@ if(isset($_POST['upload-website'])) {
 	$size = $_FILES['siteFile']['size']; // get file size
 
 	$numErrors = 0;
-	$username = $_SESSION['username']; // get user who created website
+	$username = $_POST['username']; // get user who created website
 	$siteName = $_POST['siteName']; // get site name
 	$isEnabled = 1; // enable it by default
 	$srcPath = '/var/userSites/'.$siteName.'/'; // source path
