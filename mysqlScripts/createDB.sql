@@ -4,6 +4,7 @@ create table if not exists users (
 	user_email varchar(255) not null,
 	user_uid varchar(255) not null,
 	psswd varchar(255) not null,
+	superuser int(1) not null,
 	primary key(user_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=7;
 

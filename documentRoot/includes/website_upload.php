@@ -1,5 +1,6 @@
 <!-- Website Upload module -->
 <?php
+session_start();
 include('requireLogin.php');
 include('dbconnect.php');
 // If 'upload-website' button is clicked
@@ -115,6 +116,7 @@ if(isset($_POST['upload-website'])) {
 	// If we encountered no errors, insert new entry into database
 	if ($numErrors == 0){
 		$date = date("Y-m-d H:i:s");
+		$username = $_SESSION['username'];
 		$sql = "INSERT INTO websites (user_uid, created_on, website_name, is_domain, is_enabled, src_path)
 					VALUES ('$username', '$date', '$siteName', '$isDomain', '$isEnabled', '$srcPath')";
 		mysqli_query($conn, $sql);

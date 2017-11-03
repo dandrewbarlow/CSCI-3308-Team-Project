@@ -6,9 +6,14 @@
 		$_SESSION['msg'] = "You must log in first";
 		header('location: index.php');
 	}
+	if($_SESSION['superuser'] != 1){
+		$_SESSION['msg']="You do not have privileges";
+		header('location: ../index.php');
+	}
 
 	// Includes new user registration module
-	include('includes/requireLogin.php');
+	include('includes/requireSuperuser.php');
+	include('includes/register_user.php');
 ?>
 <!-- Webpage for registering new user -->
 <!DOCTYPE html>
@@ -30,7 +35,7 @@
 
 			<?php include('includes/errors.php') ?>
 
-			<form class="login" action="includes/register_user.php" method="post">
+			<form class="login" action="register.php" method="post">
 				<div class="input-group">
 					<label>Name</label>&nbsp;
 					<input type="text" name="name" value="">
@@ -42,6 +47,9 @@
 				<div class="input-group">
 					<label>Username</label>&nbsp;
 					<input type="text" name="username" value="">
+				</div>
+				<div class="input-group">
+					<label>Is the new user also a superuser?</label>&nbsp;<input type="radio" name="superuser" value="true">Yes
 				</div>
 				<div class="input-group">
 					<label>Password</label>&nbsp;

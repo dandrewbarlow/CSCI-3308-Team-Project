@@ -6,8 +6,6 @@
 		$_SESSION['msg'] = "You must log in first";
 		header('location: index.php');
 	}
-
-
 ?>
 <!-- Home page for a logged in user -->
 <!DOCTYPE html>
@@ -23,12 +21,12 @@
 	<div class="content">
 
 		<!-- Notification Message: Appears only the first time during any session -->
-		<?php if (isset($_SESSION['success'])) : ?>
+		<?php if (isset($_SESSION['msg'])) : ?>
 			<div class="error success" >
 				<h3>
 					<?php
-						echo $_SESSION['success'];
-						unset($_SESSION['success']);
+						echo $_SESSION['msg'];
+						unset($_SESSION['msg']);
 					?>
 				</h3>
 			</div>
@@ -39,18 +37,23 @@
 			<div class="content">
 				<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
 			</div>
+			<!-- Create new user if user is a superuser -->
+			<?php  if ($_SESSION['superuser'] == 1) : ?>
+				<div class="content">
+					<a href="/register.php">Create new user</a>
+				</div>
+				<div class="content">
+					<a href="/allUsers.php">Manage users</a>
+				</div><br>
+			<?php endif ?>
 			<div class="content">
-				<a href="/register.php">Create new user</a>
-			</div>
+				<a href="/reset.php">Reset password</a>
+			</div><br>
 			<div class="content">
-				<a href="/reset.php">Reset Password</a>
-			</div>
-			<div class="content">
-				<a href="/userSites.php">Manage Your Websites</a>
-			</div>
+				<a href="/userSites.php">Manage websites</a>
+			</div><br>
 		<?php endif ?>
-
-		<a href="/includes/restart_server.php">restart the server</a><br>
+		<a href="/includes/restart_server.php">Restart the server</a><br>
 		<a href="storage.php">Upload and Download Files</a>
 	</div>
 

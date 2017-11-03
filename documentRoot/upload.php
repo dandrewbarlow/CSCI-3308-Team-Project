@@ -30,6 +30,11 @@
 	If you are uploading a .zip make sure that the page you want a visitor to see first is called "index.html" or any other web accessible file extension.<br></p>
 	<!-- Form -->
 	<form action="includes/website_upload.php" method="post" enctype="multipart/form-data">
+		<?php
+			if (isset($_SESSION['username'])) {
+				echo "Username: <input type=\"text\" name=\"username\" value=".$_SESSION['username']." disabled><br><br>";
+			}
+		?>
 		<h3>Select File to Upload:</h3>
 		Site name:&nbsp;&nbsp;<input type="text" name="siteName"><br><br>
 		Is this a domain name?<br>
