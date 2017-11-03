@@ -1,5 +1,6 @@
 <!-- Website Upload module -->
 <?php
+session_start();
 include('requireLogin.php');
 include('dbconnect.php');
 // If 'upload-website' button is clicked
