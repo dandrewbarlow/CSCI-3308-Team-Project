@@ -75,8 +75,7 @@
 							<td><input type="radio" name="domain" value="true">Yes</td>
 						</tr>
 					</table><br>
-					<label for="siteFile" class="btn btn-primary">Upload File</label>
-					<input type="file" name="siteFile" id="siteFile" style="display: none;"><br><br>
+					<input type="file" name="siteFile" id="siteFile" /><br><br>
 					<input class="btn btn-success" type="submit" value="Upload Website" name="upload-website">
 				</form>
 			</div>
