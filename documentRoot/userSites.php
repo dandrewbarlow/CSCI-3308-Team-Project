@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include('includes/requireLogin.php');
 include('includes/dbconnect.php');
 ?>
