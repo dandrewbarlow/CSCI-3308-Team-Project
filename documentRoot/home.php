@@ -2,10 +2,7 @@
 	session_start();
 
 	// Check whether the user is logged in
-	if (!isset($_SESSION['username'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: index.php');
-	}
+	include('includes/requireLogin.php');
 ?>
 <!-- Home page for a logged in user -->
 <!DOCTYPE html>
@@ -41,7 +38,7 @@
 			<?php  if ($_SESSION['superuser'] == 1) : ?>
 				<div class="content">
 					<a href="/register.php">Create new user</a>
-				</div>
+				</div><br>
 				<div class="content">
 					<a href="/allUsers.php">Manage users</a>
 				</div><br>
@@ -52,9 +49,13 @@
 			<div class="content">
 				<a href="/userSites.php">Manage websites</a>
 			</div><br>
+			<div>
+				<a href="/includes/restart_server.php">Restart the server</a><br>
+			</div><br>
+			<div>
+				<a href="storage.php">Upload and Download Files</a>
+			</div><br>
 		<?php endif ?>
-		<a href="/includes/restart_server.php">Restart the server</a><br>
-		<a href="storage.php">Upload and Download Files</a>
 	</div>
 
 	<div class="footer">

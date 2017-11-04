@@ -2,12 +2,13 @@
 <?php
 
 session_start();
-if(!isset($_SESSION['username'])){
-	$_SESSION['msg']="YOU MUST LOG IN FIRST";
-	header('location: ../index.php');
-}else{
-	// Restart server
+include('requireLogin.php');
+// Restart server
+// Additional security check
+if(isset($_SESSION['username']))
+{
 	exec('sudo /sbin/reboot');
 }
-
+//if something went wrong and we're still alive, go to index
+header('location: ../index.php');
 ?>
