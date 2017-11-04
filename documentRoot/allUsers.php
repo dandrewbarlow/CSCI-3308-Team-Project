@@ -2,10 +2,9 @@
 	session_start();
 
 	// Check if user is logged in
-	if (!isset($_SESSION['username'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: index.php');
-	}
+	includes('includes/requireLogin');
+
+	//make sure user is superuser
 	if($_SESSION['superuser'] != 1){
 		$_SESSION['msg']="You do not have privileges";
 		header('location: ../index.php');

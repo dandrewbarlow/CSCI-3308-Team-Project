@@ -2,10 +2,7 @@
 	session_start();
 
 	// Check if user is logged in
-	if (!isset($_SESSION['username'])) {
-		$_SESSION['msg'] = "You must log in first";
-		header('location: index.php');
-	}
+	includes('includes/requireLogin');
 
 	// Includes password reset module
 	include('includes/requireLogin.php');

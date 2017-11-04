@@ -1,9 +1,7 @@
 <?php
 session_start();
-if (!isset($_SESSION['username'])){
-	$_SESSION['msg'] = "You must log in first";
-	header("location: index.php");
-}
+
+//make sure user is logged in
 include('includes/requireLogin.php');
 ?>
 
@@ -20,7 +18,7 @@ include('includes/requireLogin.php');
 		<p>Here you can upload files to your server!<br>
 		You can upload files from your computer, or specify a bit torrent URL for your server to download.<br>
 		You can also specify if you want this file to be available to only you, or everyone.</p>
-		
+
 		<form action="includes/storageHandler.php" method="post" enctype="multipart/form-data">
 			Select file to upload:<input type="file" name="uploadFile" id="uploadFile"><br>
 			Or specify a bitTorrent URL:<input type="text" name="TorURL"><br>
@@ -66,6 +64,6 @@ include('includes/requireLogin.php');
 		?>
 		<div name="public" style="border:1px">
 			<ul><?php echo $fileList; ?></ul>
-		</div>		
+		</div>
 	</div>
 </body>
