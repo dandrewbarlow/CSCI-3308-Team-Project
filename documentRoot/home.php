@@ -38,7 +38,7 @@
 			<?php  if ($_SESSION['superuser'] == 1) : ?>
 				<div class="content">
 					<a href="/register.php">Create new user</a>
-				</div>
+				</div><br>
 				<div class="content">
 					<a href="/allUsers.php">Manage users</a>
 				</div><br>
