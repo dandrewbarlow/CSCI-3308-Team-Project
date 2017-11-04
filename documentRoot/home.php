@@ -49,10 +49,10 @@
 			<div class="content">
 				<a href="/userSites.php">Manage websites</a>
 			</div><br>
-			<div><br>
+			<div>
 				<a href="/includes/restart_server.php">Restart the server</a><br>
 			</div><br>
-			<div><br>
+			<div>
 				<a href="storage.php">Upload and Download Files</a>
 			</div><br>
 		<?php endif ?>
