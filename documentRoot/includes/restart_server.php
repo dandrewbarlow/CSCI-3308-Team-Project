@@ -2,7 +2,7 @@
 <?php
 
 session_start();
-include(requireLogin);
+include('requireLogin.php');
 	// Restart server
 	exec('sudo /sbin/reboot');
 }
