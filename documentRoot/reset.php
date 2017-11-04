@@ -2,7 +2,7 @@
 	session_start();
 
 	// Check if user is logged in
-	includes('includes/requireLogin');
+	include('includes/requireLogin');
 
 	// Includes password reset module
 	include('includes/requireLogin.php');

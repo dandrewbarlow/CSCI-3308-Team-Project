@@ -2,7 +2,7 @@
 	session_start();
 
 	// Check whether the user is logged in
-	includes('includes/requireLogin');
+	include('includes/requireLogin');
 ?>
 <!-- Home page for a logged in user -->
 <!DOCTYPE html>

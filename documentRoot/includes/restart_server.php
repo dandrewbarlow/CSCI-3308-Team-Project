@@ -2,10 +2,7 @@
 <?php
 
 session_start();
-if(!isset($_SESSION['username'])){
-	$_SESSION['msg']="YOU MUST LOG IN FIRST";
-	header('location: ../index.php');
-}else{
+include(requireLogin);
 	// Restart server
 	exec('sudo /sbin/reboot');
 }
