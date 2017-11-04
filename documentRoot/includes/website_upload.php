@@ -17,6 +17,13 @@ if(isset($_POST['upload-website'])) {
 	$isEnabled = 1; // enable it by default
 	$srcPath = '/var/userSites/'.$siteName.'/'; // source path
 
+	//if website name is not unique, die
+	$sql = 'SELECT * FROM websites WHERE website_name="'.$siteName.'"';
+	$result = mysqli_query($conn, $sql);
+	if(mysqli_num_rows($result) > 0){
+		die('webiste already exists');
+	}
+
 	//if type is not an allowable type, exit and report error
 	if(!($type == "application/zip" || $type == "text/html")) {
 		$numErrors++;
