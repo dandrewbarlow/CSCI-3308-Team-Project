@@ -71,9 +71,9 @@ include('includes/dbconnect.php');
 				$filelist .= "<th>Id</th><th>Website Name</th><th>Created By</th><th>Created On</th><th>Is Domain?</th><th>Enable?</th><th>Delete?</th>";
 				$filelist .= "</tr>";
 				while($row = mysqli_fetch_array($result)){
-					$form = '<form method="post" action="includes/siteEnable.php"><input type="hidden" name="siteID" value="'.$row['site_id'].'">';
+					$form = '<form method="post" action="includes/siteEnable.php"><input type="hidden" name="siteID" value="'.$row['website_name'].'">';
 					$button = '<input type="submit" value="Enable"></form>';
-					$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$row['site_id'].'">';
+					$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$row['website_name'].'">';
 					$button2 = '<input type="submit" value="Delete"></form>';
 					$filelist .= "<tr><td>".$row['site_id'].'</td>';
 					$filelist .= "<td>".$row['website_name'].'</td>';
