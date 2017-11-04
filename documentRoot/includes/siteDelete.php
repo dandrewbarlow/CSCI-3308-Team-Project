@@ -24,7 +24,7 @@ $siteName = $_POST['siteID'];
 delete_files('/var/userSites/'.$siteName.'/');
 unlink('/etc/apache2/sites-available/'.$siteName.'.conf') or die("unable to delete conf file");
 
-$sqlquery = 'DELETE FROM websites WHERE site_id="'.$siteName.'"';
+$sqlquery = 'DELETE FROM websites WHERE website_name="'.$siteName.'"';
 mysqli_query($conn, $sqlquery) or die("unable to remove DB row");
 exec('sudo apache2ctl -k graceful');
 header("location: ../userSites.php");
