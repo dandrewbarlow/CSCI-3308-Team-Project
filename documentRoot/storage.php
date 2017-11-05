@@ -24,6 +24,9 @@ include('includes/requireLogin.php');
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
 				<a class="nav-item nav-link" href="home.php">Home</a>
+				<?php  if ($_SESSION['superuser'] == 1) : ?>
+					<a class="nav-item nav-link" href="allUsers.php">Manage Users</a>
+				<?php endif ?>
 				<a class="nav-item nav-link" href="userSites.php">Manage Websites</a>
 				<a class="nav-item nav-link active" href="storage.php">Cloud Storage <span class="sr-only">(current)</span></a>
 				<a class="nav-item nav-link" href="reset.php">Reset Password</a>
@@ -143,10 +146,10 @@ include('includes/requireLogin.php');
 	</div>
 
 	<!-- Footer -->
-	<div class="footer">
+	<!-- <div class="footer">
 	    <div class="container text-muted center">
 			© 2017 Pi In The Sky
 	    </div>
-	</div>
+	</div> -->
 	<!-- End footer -->
 </body>

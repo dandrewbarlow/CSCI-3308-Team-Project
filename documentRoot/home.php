@@ -107,9 +107,9 @@
 				<div class="card" style="width: 20rem;">
 					<div class="card-body">
 						<h4 class="card-title">Restart Server</h4>
-						<p class="card-text">Restart the server</p>
+						<p class="card-text">Restarts the server</p>
 						<p class="card-text danger">Warning: Can disrupt other users' activities.</p>
-						<a href="storage.php" class="card-link">Go to cloud storage</a>
+						<a href="includes/restart_server.php" class="card-link">Restart the server</a>
 					</div>
 				</div>
 			</div>
