@@ -59,11 +59,11 @@
 			<!-- If superuser display user dashboard stuff. Otherwise pad it -->
 			<?php  if ($_SESSION['superuser'] == 1) : ?>
 				<div class="col-md-4">
-					<div class="card" style="width: 20rem;">
+					<div class="card card-clickable" style="width: 20rem;">
 						<div class="card-body">
 							<h4 class="card-title">Manage Users</h4>
 							<p class="card-text">Add and delete users</p><br><br>
-							<a href="allUsers.php" class="card-link">Go to user dashboard</a>
+							<a href="allUsers.php" class="card-link"></a>
 						</div>
 					</div>
 				</div>
@@ -73,21 +73,21 @@
 			<?php endif ?>
 
 			<div class="col-md-4">
-				<div class="card" style="width: 20rem;">
+				<div class="card card-clickable" style="width: 20rem;">
 					<div class="card-body">
 						<h4 class="card-title">Manage your websites</h4>
 						<p class="card-text">Check and modify the status of all of your websites. Add new websites and remove existing ones</p>
-						<a href="userSites.php" class="card-link">Go to website dashboard</a>
+						<a href="userSites.php" class="card-link"></a>
 					</div>
 				</div>
 			</div>
 
 			<div class="col-md-4">
-				<div class="card" style="width: 20rem;">
+				<div class="card card-clickable" style="width: 20rem;">
 					<div class="card-body">
 						<h4 class="card-title">Cloud Storage</h4>
 						<p class="card-text">Upload new files to the cloud. View and modify existing files.</p><br>
-						<a href="storage.php" class="card-link">Go to cloud storage</a>
+						<a href="storage.php" class="card-link"></a>
 					</div>
 				</div>
 			</div>
@@ -104,12 +104,14 @@
 			<div class="col-md-4"></div>
 
 			<div class="col-md-4">
-				<div class="card" style="width: 20rem;">
+				<div class="card card-clickable" style="width: 20rem;">
 					<div class="card-body">
 						<h4 class="card-title">Restart Server</h4>
-						<p class="card-text">Restarts the server</p>
-						<p class="card-text danger">Warning: Can disrupt other users' activities.</p>
-						<a href="includes/restart_server.php" class="card-link">Restart the server</a>
+						<p class="card-text">
+							Restart the server<br>
+							<span class="danger">Warning! Can disrupt other users' activities.</span>
+						</p>
+						<a href="includes/restart_server.php" class="card-link"></a>
 					</div>
 				</div>
 			</div>
@@ -127,5 +129,12 @@
 	    </div>
 	</div> -->
 	<!-- End footer -->
+
+	<script>
+		$(".card-clickable").click(function() {
+			window.location = $(this).find("a").attr("href");
+			return false;
+		});
+	</script>
 </body>
 </html>
