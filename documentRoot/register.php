@@ -56,12 +56,6 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Is the new user also a superuser?
-      <div class="col-sm-10">
-        <input class="form-control" id="superuser" name="superuser" type="radio" placeholder="Click to enter password..." value="true">Yes
-      </div>
-    </div>
-    <div class="form-group">
       <label class="col-sm-2 control-label">Password</label>
       <div class="col-sm-10">
         <input class="form-control" id="password1" name="password1" type="password" placeholder="Click to enter password...">
@@ -71,6 +65,12 @@
       <label class="col-sm-2 control-label">Repeat Password</label>
       <div class="col-sm-10">
         <input class="form-control" id="password2" name="password2" type="password" placeholder="Click to re-enter password...">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Is the new user also a superuser?</label>
+      <div class="col-sm-10">
+        <input class="form-control" id="superuser" name="superuser" type="radio" placeholder="Click to enter password..." value="true">Yes
       </div>
     </div>
     <div class="form-group">
