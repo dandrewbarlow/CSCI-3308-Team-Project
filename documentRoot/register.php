@@ -70,23 +70,23 @@
 				<form class="login" action="register.php" method="post">
 					<table align="center" class="table-right-align">
 						<tr>
-							<td><label>Name</label>&nbsp;&nbsp;</td>
+							<td><label>Name</label>&nbsp;*&nbsp;</td>
 							<td><input type="text" name="name" value=""></td>
 						</tr>
 						<tr>
-							<td><label>Email</label>&nbsp;&nbsp;</td>
+							<td><label>Email</label>&nbsp;*&nbsp;</td>
 							<td><input type="text" name="email" value=""></td>
 						</tr>
 						<tr>
-							<td><label>Username</label>&nbsp;&nbsp;</td>
+							<td><label>Username</label>&nbsp;*&nbsp;</td>
 							<td><input type="text" name="username" value=""></td>
 						</tr>
 						<tr>
-							<td><label>Password</label>&nbsp;&nbsp;</td>
+							<td><label>Password</label>&nbsp;*&nbsp;</td>
 							<td><input type="password" name="password1" value=""></td>
 						</tr>
 						<tr>
-							<td><label>Repeat Password</label>&nbsp;&nbsp;</td>
+							<td><label>Repeat Password</label>&nbsp;*&nbsp;</td>
 							<td><input type="password" name="password2" value=""></td>
 						</tr>
 					</table><br>
@@ -96,7 +96,8 @@
 					<div class="form-group">
 						<button type="submit" name="register" class="btn btn-success">Register new user</button>
 					</div>
-				</form>
+				</form><br>
+				<b>* Required fields</b>
 			</div>
 			<div class="col-md-2"></div>
 		</div>

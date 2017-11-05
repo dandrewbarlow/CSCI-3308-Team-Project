@@ -69,7 +69,7 @@ include('includes/dbconnect.php');
 				$filelist = "<tr><th>Id</th><th>Website Name</th><th>Created By</th><th>Created On</th><th>Is Domain?</th><th>Disable?</th></tr>";
 				while($row = mysqli_fetch_array($result)){
 					$form = '<form method="post" action="includes/siteDisable.php"><input type="hidden" name="siteID" value="'.$row['website_name'].'">';
-					$button = '<input type="submit" value="disable"></form>';
+					$button = '<input type="submit" class="btn btn-warning" value="disable"></form>';
 					$filelist .= "<tr><td>".$row['site_id'].'</td>';
 					$filelist .= "<td>".$row['website_name'].'</td>';
 					$filelist .= "<td>".$row['user_uid'].'</td>';
@@ -103,9 +103,9 @@ include('includes/dbconnect.php');
 				$filelist .= "</tr>";
 				while($row = mysqli_fetch_array($result)){
 					$form = '<form method="post" action="includes/siteEnable.php"><input type="hidden" name="siteID" value="'.$row['website_name'].'">';
-					$button = '<input type="submit" value="Enable"></form>';
+					$button = '<input type="submit" class="btn btn-success" value="Enable"></form>';
 					$form2 = '<form method="post" action="includes/siteDelete.php"><input type="hidden" name="siteID" value="'.$row['website_name'].'">';
-					$button2 = '<input type="submit" value="Delete"></form>';
+					$button2 = '<input type="submit" class="btn btn-danger" value="Delete"></form>';
 					$filelist .= "<tr><td>".$row['site_id'].'</td>';
 					$filelist .= "<td>".$row['website_name'].'</td>';
 					$filelist .= "<td>".$row['user_uid'].'</td>';
