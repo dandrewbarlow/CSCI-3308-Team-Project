@@ -2,7 +2,7 @@
 	session_start();
 
 	// Check if user is logged in
-	include('includes/requireLogin');
+	include('includes/requireLogin.php');
 
 	//make sure user is superuser
 	if($_SESSION['superuser'] != 1){
@@ -25,7 +25,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="js/bootstrap.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
 </head>
 <body>
 	<!-- Navbar -->
@@ -81,7 +81,7 @@
 						   echo "<tr>";
 						   echo "<td>$row[0]</td> <td>$row[1]</td> <td>$row[2]</td> <td>$row[3]</td>";
 						   if ($row[3] != $_SESSION['username']) {
-							   echo "<td><input type=\"submit\" class=\"btn btn-danger\" name=\"".$row[0]."\"value=\"Delete\"/></td>";
+							   echo "<td><input type=\"submit\" class=\"btn btn-danger delete-user\" name=\"".$row[0]."\"value=\"Delete\"/></td>";
 						   }
 						   else {
 							   echo "<td></td>";
@@ -106,7 +106,7 @@
 						while($row = mysqli_fetch_array($result, MYSQLI_NUM)){
 						   echo "<tr>";
 						   echo "<td>$row[0]</td> <td>$row[1]</td> <td>$row[2]</td> <td>$row[3]</td>";
-						   echo "<td><input type=\"submit\" class=\"btn btn-danger\" name=\"".$row[0]."\"value=\"Delete\"/></td>";
+						   echo "<td><input type=\"submit\" class=\"btn btn-danger delete-user\" name=\"".$row[0]."\"value=\"Delete\"/></td>";
 						   echo "</tr>";
 					   }
 					?>
@@ -128,7 +128,7 @@
 
 	<script>
 		$(document).ready(function(){
-			$('.button').click(function(){
+			$('.delete-user').click(function(){
 				var clickBtnName = $(this).attr('name');
 				var ajaxurl = './includes/userDeleteHandler.php';
 				var data = {'id': clickBtnName};
