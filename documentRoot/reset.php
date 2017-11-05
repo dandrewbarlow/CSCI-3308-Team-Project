@@ -26,7 +26,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link" href="index.php">Home</a>
+				<a class="nav-item nav-link" href="home.php">Home</a>
 				<a class="nav-item nav-link" href="userSites.php">Manage Websites</a>
 				<a class="nav-item nav-link" href="storage.php">Cloud Storage</a>
 				<a class="nav-item nav-link active" href="#">Reset Password <span class="sr-only">(current)</span></a>
@@ -80,10 +80,12 @@
 		</div>
 	</div>
 
+	<!-- Footer -->
 	<div class="footer">
 	    <div class="container text-muted center">
 			© 2017 Pi In The Sky
 	    </div>
 	</div>
+	<!-- End footer -->
 </body>
 </html>
