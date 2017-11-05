@@ -57,7 +57,7 @@ include('includes/dbconnect.php');
 		<div class="row">
 			<div class="col-md-6">
 				<h2>Enabled Sites</h2><br>
-				<table align="center">
+				<table align="center" class="table-border">
 				<?php
 					$query = "";
 					if ($_SESSION['superuser'] == 1) {
@@ -76,7 +76,7 @@ include('includes/dbconnect.php');
 						$filelist = "<tr><th>Id</th><th>Website Name</th><th>Created By</th><th>Created On</th><th>Is Domain?</th><th>Disable?</th></tr>";
 						while($row = mysqli_fetch_array($result)){
 							$form = '<form method="post" action="includes/siteDisable.php"><input type="hidden" name="siteID" value="'.$row['website_name'].'">';
-							$button = '<input type="submit" class="btn btn-warning" value="disable"></form>';
+							$button = '<input type="submit" class="btn btn-warning" value="Disable"></form>';
 							$filelist .= "<tr><td>".$row['site_id'].'</td>';
 							$filelist .= "<td>".$row['website_name'].'</td>';
 							$filelist .= "<td>".$row['user_uid'].'</td>';
@@ -94,7 +94,7 @@ include('includes/dbconnect.php');
 			<!-- Available sites -->
 			<div class="col-md-6">
 				<h2>Available Sites</h2><br>
-				<table align="center">
+				<table align="center" class="table-border">
 				<?php
 					$query = "";
 					if ($_SESSION['superuser'] == 1) {
