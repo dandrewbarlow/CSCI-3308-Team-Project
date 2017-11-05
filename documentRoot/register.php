@@ -68,9 +68,9 @@
       </div>
     </div>
     <div class="form-group">
-      <label>Is the new user also a superuser?</label>
+      <label for="superuser" class="col-sm-2 control-label">Is new user a superuser?</label>
       <div class="col-sm-10">
-        <input class="form-control" id="superuser" name="superuser" type="text" placeholder="Click to enter password...">
+        <input type="checkbox" name="superuser" id="superuser" value="true">Yes
       </div>
     </div>
     <div class="form-group">
@@ -86,4 +86,4 @@ $(document).ready(function(){
 });
 </script>
 </body>
-</html>
+</html>>
