@@ -70,7 +70,7 @@
     <div class="form-group">
       <label>Is the new user also a superuser?</label>
       <div class="col-sm-10">
-        <input class="form-control" id="superuser" name="superuser" type="radio" placeholder="Click to enter password..." value="true">Yes
+        <input class="form-control" id="superuser" name="superuser" type="text" placeholder="Click to enter password...">
       </div>
     </div>
     <div class="form-group">
