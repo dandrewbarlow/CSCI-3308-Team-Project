@@ -49,6 +49,7 @@
 	</nav>
 	<!-- End navbar -->
 
+	<!-- Header -->
 	<div class="extra-space-sm"></div>
 	<div class="container">
 		<div class="row">
@@ -59,23 +60,17 @@
 			<div class="col-md-2"></div>
 		</div>
 	</div>
+	<!-- End header -->
 
 	<div class="extra-space-sm"></div>
-	<div class="container">
+	<div class="container description">
+
+		<a class="btn btn-primary" href="register.php">Create a new user</a><br><br><br>
 
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8 center">
-				<a class="btn btn-primary" href="register.php">Create a new user</a><br><br>
-			</div>
-			<div class="col-md-2"></div>
-		</div>
 
-		<br>
-
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8 center">
+			<!-- Superusers -->
+			<div class="col-md-6">
 				<h2>Superusers</h2><br>
 				<table align="center" class="table-border">
 					<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> <th>Delete?</th> </tr>
@@ -98,14 +93,10 @@
 				<div class="extra-space-sm"></div>
 				<p><b>*You cannot delete yourself</b></p>
 			</div>
-			<div class="col-md-2"></div>
-		</div>
+			<!-- End superusers -->
 
-		<br><br>
-
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8 center">
+			<!-- Normal users -->
+			<div class="col-md-6">
 				<h2>Normal Users</h2><br>
 				<table align="center" class="table-border">
 					<tr> <th>Id</th> <th>Name</th> <th>Email</th> <th>Username</th> <th>Delete?</th> </tr>
@@ -121,7 +112,7 @@
 					?>
 				</table>
 			</div>
-			<div class="col-md-2"></div>
+			<!-- End normal users -->
 		</div>
 
 	</div>
