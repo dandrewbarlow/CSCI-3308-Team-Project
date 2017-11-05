@@ -60,6 +60,17 @@
 
 	<div class="extra-space-sm"></div>
 	<div class="container">
+
+		<div class="row">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 center">
+				<a class="btn btn-primary" href="register.php">Create a new user</a><br><br>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+
+		<br>
+
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8 center">
