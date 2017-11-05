@@ -90,59 +90,59 @@ include('includes/requireLogin.php');
 
 		<!-- Display uploaded files here -->
 		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
+
+			<!-- Private files -->
+			<div class="col-md-6">
 				<h2 style="text-align: center;">Private Files</h2>
 				<?php
-					$fileList = "";
+					$fileList = "<ul>";
 					if($handle = opendir('/var/data/'.$_SESSION['username'].'/')){
 						while (false != ($file = readdir($handle))){
 							if($file != "." && $file != ".."){
 								$deletebutton = '<form action="includes/storageDelete.php" method="post" enctype="multipart/form-data">';
-								$deletebutton2='<input type="hidden" name="privateFile" value="'.$file.'"><input type="submit" value="Delete"></form>';
-								$fileList .= '<a href="/data/'.$_SESSION['username'].'/'.$file.'" download>'.$file.'</a>'.$deletebutton.$deletebutton2.'<br>';
+								$deletebutton2='<input type="hidden" name="privateFile" value="'.$file.'"><input class="btn btn-danger" type="submit" value="Delete"></form>';
+								$fileList .= '<li><a href="/data/'.$_SESSION['username'].'/'.$file.'" download>'.$file.'</a>'.$deletebutton.$deletebutton2.'</li>';
 							}
 						}
 						closedir($handle);
 					}else{
 						echo "Error displaying files";
 					}
+					$fileList .= "</ul>";
 				?>
 				<div name="private" style="border:1px">
 					<?php echo $fileList; ?>
 				</div>
 			</div>
-			<div class="col-md-2"></div>
-		</div>
-		<div class="extra-space-sm"></div>
+			<!-- End private files -->
 
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
+			<!-- Public Files -->
+			<div class="col-md-6">
 				<h2 style="text-align: center;">Public Files</h2>
 				<?php
-					$fileList = "";
+					$fileList = "<ul>";
 					if($handle = opendir('/var/data/public/')){
 						while (false != ($file = readdir($handle))){
 							if($file != "." && $file != ".."){
 								$deletebutton = '<form action="includes/storageDelete.php" method="post" enctype="multipart/form-data">';
-								$deletebutton2='<input type="hidden" name="publicFile" value="'.$file.'"><input type="submit" value="Delete"></form>';
-								$fileList .= '<a href="/data/public/'.$file.'" download>'.$file.'</a>'.$deletebutton.$deletebutton2.'<br>';
+								$deletebutton2='<input type="hidden" name="publicFile" value="'.$file.'"><input class="btn btn-danger" type="submit" value="Delete"></form>';
+								$fileList .= '<li><a href="/data/public/'.$file.'" download>'.$file.'</a>'.$deletebutton.$deletebutton2.'</li>';
 							}
 						}
 						closedir($handle);
 					}else{
 						echo "Error displaying files";
 					}
+					$fileList .= '</ul>';
 				?>
 				<div name="public" style="border:1px">
-					<ul><?php echo $fileList; ?></ul>
+					<?php echo $fileList; ?>
 				</div>
 			</div>
-			<div class="col-md-2"></div>
+			<!-- End public files -->
 		</div>
-		<div class="extra-space-md"></div>
 
+		<div class="extra-space-sm"></div>
 	</div>
 
 	<!-- Footer -->
