@@ -38,12 +38,6 @@ if(isset($_POST['storage-submit'])){
 			die($name." file upload unsuccessful. Please go back and try again");
 		}
 	}
-	//If torrenting file:
-	if(isset($_POST['TorURL'])){
-		$URL = $_POST['TorURL'];//get torrent URL
-		//start torrent with transmission
-		exec('cd /var/data/; nohup transmission-cli -w '.$storageDir.' "'.$URL.'" 1>/dev/null 2>/dev/null &');
-	}
 	// Return to storage page
 	header('location: /storage.php');
 }

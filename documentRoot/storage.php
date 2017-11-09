@@ -21,7 +21,6 @@ include('includes/requireLogin.php');
 
 		<form action="includes/storageHandler.php" method="post" enctype="multipart/form-data">
 			Select file to upload:<input type="file" name="uploadFile" id="uploadFile"><br>
-			Or specify a bitTorrent URL:<input type="text" name="TorURL"><br>
 			Is this a private or public file:<input type="radio" name="privacy" value="private">Private
 			<input type="radio" name="privacy" value="public">Public<br>
 			<input type="submit" name="storage-submit" value="Upload File">
