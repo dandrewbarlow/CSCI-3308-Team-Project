@@ -18,8 +18,13 @@ if(isset($_POST['upload-website'])) {
 	$srcPath = '/var/userSites/'.$siteName.'/'; // source path
 
 	//if website name is not unique, die
-	$sql = 'SELECT * FROM websites WHERE website_name="'.$siteName.'"';
-	$result = mysqli_query($conn, $sql);
+	$sql = 'SELECT * FROM websites WHERE website_name=?'; 	//prep for prepared statement
+	if ($stmt = $conn->prepare($sql)) { 	// execute prepared statement
+		$stmt->bind_param("s", $siteName);
+		$stmt->execute();
+	}
+	$result = $stmt->get_result();
+
 	if(mysqli_num_rows($result) > 0){
 		die('webiste already exists');
 	}
@@ -122,11 +127,22 @@ if(isset($_POST['upload-website'])) {
 
 	// If we encountered no errors, insert new entry into database
 	if ($numErrors == 0){
+
+		//Create date and username variables
 		$date = date("Y-m-d H:i:s");
 		$username = $_SESSION['username'];
+
+		//prepared statement
 		$sql = "INSERT INTO websites (user_uid, created_on, website_name, is_domain, is_enabled, src_path)
-					VALUES ('$username', '$date', '$siteName', '$isDomain', '$isEnabled', '$srcPath')";
-		mysqli_query($conn, $sql);
+					VALUES (?, ?, ?, ?, ?, ?)";
+
+		//execute prepared statement to insert website into database
+		if ($stmt = $conn->prepare($sql)) {
+			$stmt->bind_param("ssssss", $username, $date, $siteName, $isDomain, $isEnabled, $srcPath);
+			$stmt->execute();
+		}
+		$result = $stmt->get_result(); //another not needed but ever present variable
+
 	}
 
 	//soft link sites available to sites enabled
