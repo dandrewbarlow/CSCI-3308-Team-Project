@@ -29,8 +29,19 @@ if (isset($_POST['reset-password'])) {
 	if (count($errors) == 0) {
 		$pwd = md5($pwd_old); // Encrypt password
 		$sessionUser = $_SESSION['username'];
-		$sql = "SELECT * FROM users WHERE user_uid='$sessionUser' AND psswd='$pwd'";
-		$result = mysqli_query($conn, $sql);
+
+    //get sql query ready
+		$sql = "SELECT * FROM users WHERE user_uid=? AND psswd=?";
+
+    //Query database w/ a prepared statement
+    if ($stmt = $conn->prepare($sql)) {
+      $stmt->bind_param("ss", $sessionUser, $pwd);
+      $stmt->execute();
+    }
+    //Get result from query
+    $result = $stmt->get_result();
+
+
 		$resultCheck = mysqli_num_rows($result);
 		if ($resultCheck < 1) {
 			array_push($errors, "Your old password is incorrect");
@@ -45,10 +56,19 @@ if (isset($_POST['reset-password'])) {
     // If there are no errors, update the row in the database
 	if(count($errors) == 0) {
 		$pwd = md5($pwd1); // Encrypt password
-		$sql = 'UPDATE users
-				SET psswd="'.$pwd.'"
-				WHERE user_uid="'.$_SESSION['username'].'"';
-		mysqli_query($conn, $sql);
+
+    //Prep another sql statement for prepared execution
+		$sql = "UPDATE users
+				SET psswd=?
+				WHERE user_uid=?";
+
+    //Execute prepared statement
+    if ($stmt = $conn->prepare($sql)) {
+      $stmt->bind_param("ss", $pwd, $_SESSION['username']);
+      $stmt->execute();
+    }
+    $results = $stmt->get_result(); //again results was not in the original, but it can't hurt to have in case
+
 
 		// Redirect to home
 		$_SESSION['success'] = "You have updated your password";
