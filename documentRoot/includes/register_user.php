@@ -41,12 +41,14 @@ if (isset($_POST['register'])) {
 
     // Check if username already exists
     if(!empty($uid)){
-
+        //Prepared statement time :)
         $sql = "SELECT * FROM users WHERE user_uid='?'";
         if ($stmt = $conn->prepare($sql)) {
-          stmt->bind_param("s", $uid)
+          $stmt->bind_param("s", $uid);
+          $stmt->execute();
         }
-		$result = mysqli_query($conn, $sql);
+
+		$result = $stmt->get_result(); //get results from statement
 		$resultCheck = mysqli_num_rows($result);
         if ($resultCheck >= 1){
             array_push($errors, "Username already exists.");
@@ -56,8 +58,14 @@ if (isset($_POST['register'])) {
     // If there are no errors, insert new row into table
 	if(count($errors) == 0) {
 		$pwd = md5($pwd1); // Encrypt password
+
 		$sql = "INSERT INTO users (user_name, user_email, user_uid, psswd, superuser)
-					VALUES ('$name', '$email', '$uid', '$pwd', '$superuser')";
+					VALUES (?, ?, ?, ?, ?)";
+    //Comin at you with another prepared statement
+    if ($stmt = conn->prepare($sql)) {
+      $stmt->bind_param("sssss", $name, $email, $uid, $pwd, $superuser);
+      $stmt->execute();
+    }
 		mysqli_query($conn, $sql);
 
 		//create user storage directory
