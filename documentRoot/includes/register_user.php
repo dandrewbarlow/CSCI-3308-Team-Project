@@ -41,7 +41,11 @@ if (isset($_POST['register'])) {
 
     // Check if username already exists
     if(!empty($uid)){
-        $sql = "SELECT * FROM users WHERE user_uid='$uid'";
+
+        $sql = "SELECT * FROM users WHERE user_uid='?'";
+        if ($stmt = $conn->prepare($sql)) {
+          stmt->bind_param("s", $uid)
+        }
 		$result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
         if ($resultCheck >= 1){

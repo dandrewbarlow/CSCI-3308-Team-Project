@@ -27,7 +27,7 @@ if (isset($_POST['login'])) {
       $stmt->execute();
     }
 
-    $result = $stmt->get_result(); // Send a query to the database
+    $result = $stmt->get_result(); // get results from the executed query
 		$resultCheck = mysqli_num_rows($result); // Retrieve number of rows the query returned
 
 		// If username doesn't exist
