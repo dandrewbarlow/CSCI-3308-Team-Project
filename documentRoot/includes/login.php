@@ -17,8 +17,16 @@ if (isset($_POST['login'])) {
 	}
 	else {
 		$pwd = md5($pwd); // Encrypt password
-		$sql = "SELECT * FROM users WHERE user_uid='$uid' AND psswd='$pwd'"; // The query
-		$result = mysqli_query($conn, $sql); // Send a query to the database
+
+    //Prepared statement to prevent SQL Injection
+    if ($stmt = $conn->prepare('SELECT * FROM users WHERE user_id=? AND psswd=?')) {
+      $stmt->bind_param("ss", $uid, $pwd);
+    }
+
+    //Original query
+		//$sql = "SELECT * FROM users WHERE user_uid='$uid' AND psswd='$pwd'"; // The query
+
+    $result = mysqli_query($conn, $sql); // Send a query to the database
 		$resultCheck = mysqli_num_rows($result); // Retrieve number of rows the query returned
 
 		// If username doesn't exist
