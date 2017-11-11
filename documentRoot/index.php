@@ -19,7 +19,7 @@
 
 	<body>
 		<div class="header">
-			<h1>Pi In the Sky</h1> <p>SQL Injection Testing Version</p>
+			<h1>Pi In the Sky</h1>
 		</div>
 		<div class="extra-space"></div>
 
