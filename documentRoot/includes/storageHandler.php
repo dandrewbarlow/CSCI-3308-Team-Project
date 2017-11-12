@@ -31,7 +31,8 @@ if(isset($_POST['storage-submit'])){
 		//check file specifics
 		//move to private or public storage
 		if(move_uploaded_file($tmpName, $storageDir.$name)){
-			$sql='INSERT INTO storage (name, user_name, prefix, is_private, stored_on) VALUES ("'.$name.'","'.$username.'","'.$storageDir.'",'.$is_private.','.date("Y-m-d H:i:s").')';
+			$date = date("Y-m-d h:i:s");
+			$sql="INSERT INTO storage (name, user_name, prefix, is_private, stored_on) VALUES ('$name','$username','$storageDir','$is_private','$date')";
 			mysqli_query($conn, $sql);
 		}else{
 			die($name." file upload unsuccessful. Please go back and try again");
