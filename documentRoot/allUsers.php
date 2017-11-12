@@ -2,7 +2,7 @@
 	session_start();
 
 	// Check if user is logged in
-	include('includes/requireLogin');
+	include('includes/requireLogin.php');
 
 	//make sure user is superuser
 	if($_SESSION['superuser'] != 1){

@@ -32,7 +32,7 @@
 		<h3>Select File to Upload:</h3>
 		Site name:&nbsp;&nbsp;<input type="text" name="siteName"><br><br>
 		Is this a domain name?<br>
-		<input type="radio" name="domain" value="true">Yes<br><br>
+		<input type="checkbox" name="domain" value="true">Yes<br><br>
 		<input type="file" name="siteFile" id="siteFile"><br><br>
 		<input type="submit" value="Upload Website" name="upload-website">
 	</form>
