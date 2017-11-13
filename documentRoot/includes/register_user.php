@@ -1,14 +1,12 @@
 <!-- Register New User module -->
 <?php
+session_start();
 include('requireSuperuser.php');
-
 include('dbconnect.php');
 // Check whether the 'register' button is clicked
 if (isset($_POST['register'])) {
 
-    $errors = array(); // Initialize error array
-
-    // Retrieve form inputs via POST method
+  // Retrieve form inputs via POST method
 	$name = mysqli_real_escape_string($conn, $_POST['name']);
 	$email = mysqli_real_escape_string($conn, $_POST['email']);
 	$uid = mysqli_real_escape_string($conn, $_POST['username']);
@@ -24,48 +22,56 @@ if (isset($_POST['register'])) {
 	// HANDLE ERRORS
 	// Check if inputs are empty
 	if(empty($name)) {
-        array_push($errors, "Please enter name.");
+    $_SESSION['error'] = "Please enter name.";
+    header('Location: ../home.php');
+    exit();
 	}
 	if(empty($email)) {
-        array_push($errors, "Please enter email.");
+    $_SESSION['error'] = "Please enter email.";
+    header('Location: ../home.php');
+    exit();
 	}
 	if(empty($uid)) {
-        array_push($errors, "Please enter username.");
+    $_SESSION['error'] = "Please enter username.";
+    header('Location: ../home.php');
+    exit();
 	}
 	if(empty($pwd1) || empty($pwd2)) {
-        array_push($errors, "Please enter password.");
+    $_SESSION['error'] = "Please enter password.";
+    header('Location: ../home.php');
+    exit();
 	}
 	if ($pwd1 != $pwd2){
-        array_push($errors, "Passwords do no match.");
+    $_SESSION['error'] = "Passwords do no match.";
+    header('Location: ../home.php');
+    exit();
 	}
 
     // Check if username already exists
-    if(!empty($uid)){
-        $sql = "SELECT * FROM users WHERE user_uid='$uid'";
-		$result = mysqli_query($conn, $sql);
+  if(!empty($uid)){
+    $sql = "SELECT * FROM users WHERE user_uid='$uid'";
+	  $result = mysqli_query($conn, $sql);
 		$resultCheck = mysqli_num_rows($result);
-        if ($resultCheck >= 1){
-            array_push($errors, "Username already exists.");
-        }
+    if ($resultCheck >= 1){
+      $_SESSION['error'] =  "Username already exists.");
+      header('Location: ../home.php');
+      exit();
     }
+  }
 
     // If there are no errors, insert new row into table
-	if(count($errors) == 0) {
-		$pwd = md5($pwd1); // Encrypt password
-		$sql = "INSERT INTO users (user_name, user_email, user_uid, psswd, superuser)
-					VALUES ('$name', '$email', '$uid', '$pwd', '$superuser')";
-		mysqli_query($conn, $sql);
 
-		//create user storage directory
-		exec('mkdir /var/data/'.$uid);
+	$pwd = md5($pwd1); // Encrypt password
+	$sql = "INSERT INTO users (user_name, user_email, user_uid, psswd, superuser)
+				VALUES ('$name', '$email', '$uid', '$pwd', '$superuser')";
+	mysqli_query($conn, $sql);
 
-		// Redirect to home
-		$_SESSION['msg'] = "You have created a new user";
-		header('Location: ../home.php');
-	}
-    else {
-		$_SESSION['msg'] = "Please fix the errors";
-    }
+	//create user storage directory
+	exec('mkdir /var/data/'.$uid);
+
+  // Redirect to home
+	$_SESSION['success'] = "You have created a new user";
+	header('Location: ../allUsers.php');
 }
 
 ?>

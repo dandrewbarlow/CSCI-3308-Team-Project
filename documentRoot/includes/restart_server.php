@@ -7,8 +7,8 @@ include('requireLogin.php');
 // Additional security check
 if(isset($_SESSION['username']))
 {
+	ignore_user_abort(true);
+	header('location: ../index.php');
 	exec('sudo /sbin/reboot');
 }
-//if something went wrong and we're still alive, go to index
-header('location: ../index.php');
 ?>

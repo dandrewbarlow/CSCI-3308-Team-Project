@@ -1,8 +1,11 @@
 <!-- Display errors that any input form has -->
-<?php  if (count($errors) > 0) : ?>
-	<div class="input-group error">
-		<?php foreach ($errors as $error) : ?>
-			<p><?php echo $error ?></p>
-		<?php endforeach ?>
-	</div>
-<?php  endif ?>
+<?php
+session_start();
+if (isset($_SESSION['error'])){
+	echo '<div id="error">'.$_SESSION['error'].'</div>';
+	unset($_SESSION['error'])
+} elseif (isset($_SESSION['success'])) {
+	echo '<div id="success">'.$_SESSION['success'].'</div>';
+	unset($_SESSION['success'])
+}
+?>
