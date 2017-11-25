@@ -7,13 +7,13 @@ $id = $_REQUEST['id'];
 
 // Get username
 $queryUsername = "SELECT * FROM users WHERE user_id='$id'";
-$result = mysqli_query($conn, $queryUsername);
+$result = mysqli_query($conn, $queryUsername) or $_SESSION['error'] = 'Could not find user in database';
 $row = mysqli_fetch_array($result);
 $user_uid = $row['user_uid'];
 
 // Delete from database
 $queryDelete = "DELETE FROM users WHERE user_id='$id'";
-mysqli_query($conn, $queryDelete);
+mysqli_query($conn, $queryDelete) or $_SESSION['error'] = 'Could not delete from database';
 
 // Delete all their private files
 function delete_files($target) {
@@ -29,6 +29,8 @@ function delete_files($target) {
 }
 $path = "/var/data/".$user_uid;
 delete_files($path);
-
-$_SESSION['msg'] = "User successfully deleted from database. Note that they may still be logged in.";
+if (!(isset($_SESSION['error']))){
+	$_SESSION['success'] = "User successfully deleted from database. Note that they may still be logged in.";
+}
+header('location: ../allUsers.php');
 ?>
