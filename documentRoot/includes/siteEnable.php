@@ -11,9 +11,9 @@ if(symlink('/etc/apache2/sites-available/'.$siteName.'.conf','/etc/apache2/sites
 	exec('sudo apache2ctl -k graceful');
 }else{
 	$_SESSION['error'] = "something went wrong. The site data was probably deleted improperly";
+	header("location: ../userSites.php");
 }
-if(!(isset($_SESSION['error']))){
-	$_SESSION['success'] = 'Enabled Website';
-}
+
+$_SESSION['success'] = 'Enabled Website';
 header("location: ../userSites.php");
 ?>
