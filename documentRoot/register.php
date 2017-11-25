@@ -68,7 +68,7 @@
 		<div class="footer" style="padding: 10px;">
 			&copy; The Pi.in.the.Sky Team
 		</div>
-
+	<?php include('includes/errors.php');?>
 	</body>
 
 </html>
