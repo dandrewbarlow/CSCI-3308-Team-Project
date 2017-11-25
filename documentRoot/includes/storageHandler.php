@@ -2,14 +2,14 @@
 include('requireLogin.php');
 if(isset($_POST['storage-submit'])){
 	session_start();
-	$numErrors = 0;
 	$username = $_SESSION['username'];
 	$privacy = $_POST['privacy'];
 
 	$storageDir = '/var/data/';
-	
+
 	if(!isset($privacy)){
-		die("You must make your file public or private");
+		$_SESSION['error'] = "You must make your file public or private";
+		header('location: /storage.php');
 	}
 	if($privacy == 'public'){
 		$storageDir = $storageDir.'public/';
@@ -21,26 +21,24 @@ if(isset($_POST['storage-submit'])){
 	if(!($_FILES['uploadFile']['name'] == "")){
 		$tmpName = $_FILES['uploadFile']['tmp_name'];//get file tmp name
 		$name = $_FILES['uploadFile']['name'];//get file name
-		$type = $_FILES['uploadFile']['type'];//get file type 
+		$type = $_FILES['uploadFile']['type'];//get file type
 		$size = $_FILES['uploadFile']['size'];//get file size
-		
-	
+
+
 		//check file specifics
 		//move to private or public storage
 		if(move_uploaded_file($tmpName, $storageDir.$name)){
-			
+
 			//store metadata in mysql
 		}else{
-			die($name." file upload unsuccessful. Please go back and try again");
+			$_SESSION['error'] = $name." file upload unsuccessful. Please try again";
+			header('location: /storage.php');
 		}
 	}
-	//If torrenting file:
-	if(isset($_POST['TorURL'])){
-		$URL = $_POST['TorURL'];//get torrent URL
-		//start torrent with transmission
-		exec('cd /var/data/; nohup transmission-cli -w '.$storageDir.' "'.$URL.'" 1>/dev/null 2>/dev/null &');
-	}
 	// Return to storage page
+	if(!(isset($_SESSION['error']))){
+		$_SESSION['success'] = 'Uploaded file';
+	}
 	header('location: /storage.php');
 }
 ?>
