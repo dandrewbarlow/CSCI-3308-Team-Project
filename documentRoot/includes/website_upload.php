@@ -11,7 +11,6 @@ if(isset($_POST['upload-website'])) {
 	$type = $_FILES['siteFile']['type']; // get file type
 	$size = $_FILES['siteFile']['size']; // get file size
 
-	$numErrors = 0;
 	$username = $_SESSION['username']; // get user who created website
 	$siteName = $_POST['siteName']; // get site name
 	$isEnabled = 1; // enable it by default
@@ -21,13 +20,14 @@ if(isset($_POST['upload-website'])) {
 	$sql = 'SELECT * FROM websites WHERE website_name="'.$siteName.'"';
 	$result = mysqli_query($conn, $sql);
 	if(mysqli_num_rows($result) > 0){
-		die('webiste already exists');
+		$_SESSION['error'] = 'webiste already exists';
+		header('location: ../upload.php');
 	}
 
 	//if type is not an allowable type, exit and report error
 	if(!($type == "application/zip" || $type == "text/html")) {
-		$numErrors++;
-		die($type." Is not a valid file type. Must be either .html or .zip");
+		$_SESSION['error'] = $type." Is not a valid file type. Must be either .html or .zip";
+		header('location: ../upload.php');
 	}
 
 	//If site name is a domain name:
@@ -40,8 +40,8 @@ if(isset($_POST['upload-website'])) {
 
 		//check that domain points to server IP
 		if($givenIP != $realIP) {
-			$numErrors++;
-			die("That domain does not point to this server");
+			$_SESSION['error'] = "That domain does not point to this server";
+			header('location: ../upload.php');
 		}
 	}
 	else {
@@ -81,7 +81,8 @@ if(isset($_POST['upload-website'])) {
 	else {
 		//if something went wrong, remove the directory
 		exec('rmdir /var/userSites/'.escapeshellarg($siteName).'/');
-		echo "There was an issue uploading your file";
+		$_SESSION['error'] = "There was an issue uploading your file";
+		header('location: ../upload.php');
 	}
 
 	//If site name is a domain name:
@@ -119,9 +120,14 @@ if(isset($_POST['upload-website'])) {
 		fwrite($confFile,"\n");
 		fclose($confFile);
 	}
+	//soft link sites available to sites enabled
+	exec('ln -s /etc/apache2/sites-available/'.$siteName.'.conf /etc/apache2/sites-enabled/'.$siteName.'.conf') or $_SESSION['error'] = 'could not create conf link';
+
+	//restart apache
+	exec('sudo apache2ctl -k graceful') or $_SESSION['error'] = 'Could not restart apache';
 
 	// If we encountered no errors, insert new entry into database
-	if ($numErrors == 0){
+	if (!(isset($_SESSION['error']))){
 		$date = date("Y-m-d H:i:s");
 		$username = $_SESSION['username'];
 		$sql = "INSERT INTO websites (user_uid, created_on, website_name, is_domain, is_enabled, src_path)
@@ -129,11 +135,9 @@ if(isset($_POST['upload-website'])) {
 		mysqli_query($conn, $sql);
 	}
 
-	//soft link sites available to sites enabled
-	exec('ln -s /etc/apache2/sites-available/'.$siteName.'.conf /etc/apache2/sites-enabled/'.$siteName.'.conf');
-
-	//restart apache
-	exec('sudo apache2ctl -k graceful');
+	if (!(isset($_SESSION['error']))){
+		$_SESSION['success'] = "Website uploaded and enabled";
+	}
 	header('location: ../userSites.php');
 
 }
