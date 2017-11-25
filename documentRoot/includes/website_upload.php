@@ -135,9 +135,8 @@ if(isset($_POST['upload-website'])) {
 		mysqli_query($conn, $sql);
 	}
 
-	if (!(isset($_SESSION['error']))){
-		$_SESSION['success'] = "Website uploaded and enabled";
-	}
+
+	$_SESSION['success'] = "Website uploaded and enabled";
 	header('location: ../userSites.php');
 
 }

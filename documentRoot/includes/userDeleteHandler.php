@@ -29,8 +29,8 @@ function delete_files($target) {
 }
 $path = "/var/data/".$user_uid;
 delete_files($path);
-if (!(isset($_SESSION['error']))){
-	$_SESSION['success'] = "User successfully deleted from database. Note that they may still be logged in.";
-}
+
+$_SESSION['success'] = "User successfully deleted from database. Note that they may still be logged in.";
+
 header('location: ../allUsers.php');
 ?>

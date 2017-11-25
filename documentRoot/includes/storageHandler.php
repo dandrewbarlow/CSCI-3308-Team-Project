@@ -36,9 +36,9 @@ if(isset($_POST['storage-submit'])){
 		}
 	}
 	// Return to storage page
-	if(!(isset($_SESSION['error']))){
-		$_SESSION['success'] = 'Uploaded file';
-	}
+
+	$_SESSION['success'] = 'Uploaded file';
+
 	header('location: /storage.php');
 }
 ?>

@@ -23,8 +23,7 @@ unlink('/etc/apache2/sites-available/'.$siteName.'.conf') or $_SESSION['error'] 
 $sqlquery = 'DELETE FROM websites WHERE website_name="'.$siteName.'"';
 mysqli_query($conn, $sqlquery) or $_SESSION['error'] = 'Failed to delete conf file';
 exec('sudo apache2ctl -k graceful');
-if(!(isset($_SESSION['error']))){
-	$_SESSION['success'] = 'Deleted Website';
-}
+
+$_SESSION['success'] = 'Deleted Website';
 header("location: ../userSites.php");
 ?>

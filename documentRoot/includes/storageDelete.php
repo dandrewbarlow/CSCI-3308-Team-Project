@@ -12,8 +12,7 @@ if(isset($_POST['publicFile'])){
 }
 
 unlink($file) or $_SESSION['error'] = "file could not be deleted";
-if(!(isset($_SESSION['error']))){
-	$_SESSION['success'] = 'Deleted Content';
-}
+
+$_SESSION['success'] = 'Deleted Content';
 header("location: ../storage.php");
 ?>
