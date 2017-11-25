@@ -7,10 +7,13 @@ $siteName = $_POST['siteID'];
 
 if(symlink('/etc/apache2/sites-available/'.$siteName.'.conf','/etc/apache2/sites-enabled/'.$siteName.'.conf')){
 	$sqlquery = 'UPDATE websites SET is_enabled = 1 WHERE website_name="'.$siteName.'"';
-	mysqli_query($conn, $sqlquery);
-	exec('sudo apache2ctl -k graceful');
-	header("location: ../userSites.php");
+	mysqli_query($conn, $sqlquery) or $_SESSION['error'] = 'Could not remove DB entry';
+	exec('sudo apache2ctl -k graceful') or $_SESSION['error'] = 'Could not restart apache';
 }else{
-	die("something went wrong. The site data was probably deleted improperly");
+	$_SESSION['error'] = "something went wrong. The site data was probably deleted improperly";
 }
+if(!(isset($_SESSION['error']))){
+	$_SESSION['success'] = 'Enabled Website';
+}
+header("location: ../userSites.php");
 ?>

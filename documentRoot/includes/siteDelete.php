@@ -18,10 +18,13 @@ function delete_files($target) {
 $siteName = $_POST['siteID'];
 
 delete_files('/var/userSites/'.$siteName.'/');
-unlink('/etc/apache2/sites-available/'.$siteName.'.conf') or die("unable to delete conf file");
+unlink('/etc/apache2/sites-available/'.$siteName.'.conf') or $_SESSION['error'] = 'Failed to delete conf file';
 
 $sqlquery = 'DELETE FROM websites WHERE website_name="'.$siteName.'"';
-mysqli_query($conn, $sqlquery) or die("unable to remove DB row");
+mysqli_query($conn, $sqlquery) or $_SESSION['error'] = 'Failed to delete conf file';
 exec('sudo apache2ctl -k graceful');
+if(!(isset($_SESSION['error']))){
+	$_SESSION['success'] = 'Deleted Website';
+}
 header("location: ../userSites.php");
 ?>
