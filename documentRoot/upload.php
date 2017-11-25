@@ -38,5 +38,6 @@
 	</form>
 
 	<div>
+<?php include('includes/errors.php');?>
 </body>
 </html>
