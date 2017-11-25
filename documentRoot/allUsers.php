@@ -80,5 +80,6 @@
 				});
 			});
 		</script>
+		<?php include('includes/errors.php');?>
 	</body>
 </html>
