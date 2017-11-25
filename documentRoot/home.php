@@ -63,6 +63,6 @@
 			<button type="submit" name="logout" class="btn btn-danger">Logout</button>
 		</form>
 	</div>
-
+<?php include('includes/errors.php');?>
 </body>
 </html>
