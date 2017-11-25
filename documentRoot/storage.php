@@ -66,4 +66,5 @@ include('includes/requireLogin.php');
 			<ul><?php echo $fileList; ?></ul>
 		</div>
 	</div>
+<?php include('includes/errors.php');?>
 </body>
