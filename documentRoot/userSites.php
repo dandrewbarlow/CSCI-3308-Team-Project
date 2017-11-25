@@ -86,5 +86,6 @@ include('includes/dbconnect.php');
 		<br><br>
 		<a href="upload.php">Create a site</a>
 	</div>
+<?php include('includes/errors.php');?>
 </body>
 </html>
