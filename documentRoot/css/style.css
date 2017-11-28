@@ -28,6 +28,12 @@ body {
 	color: red;
 }
 
+.success-msg {
+	text-align: center;
+	font-weight: bold;
+	color: green;
+}
+
 .footer {
 	position: fixed;
 	bottom: 0;
