@@ -13,9 +13,9 @@ if (isset($_POST['login'])) {
 	// HANDLE ERRORS
 	// Check if inputs are empty
 	if(empty($uid) || empty($pwd)) {
-    $_SESSION['error'] = "Please enter username and password.";
-    header('Location: ../home.php');
-    exit();
+		$_SESSION['error'] = "Please enter username and password.";
+		header('Location: ../index.php');
+		exit();
 	}
 	else {
 		$pwd = md5($pwd); // Encrypt password
@@ -25,9 +25,9 @@ if (isset($_POST['login'])) {
 
 		// If username doesn't exist
 		if ($resultCheck < 1) {
-      $_SESSION['error'] = "Incorrect username or password.";
-      header('Location: ../home.php');
-      exit();
+			$_SESSION['error'] = "Incorrect username or password.";
+			header('Location: ../index.php');
+			exit();
 		}
         // Else set the session to the user_uid and redirect to 'home.php'
 		else {
@@ -37,6 +37,7 @@ if (isset($_POST['login'])) {
 			$_SESSION['username'] = $row['user_uid'];
 			$_SESSION['success'] = "You are now logged in";
 			header('Location: home.php');
+			exit();
 		}
 	}
 }

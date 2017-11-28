@@ -3,11 +3,11 @@
 	session_start();
 	
 	if (isset($_SESSION['error'])) {
-		echo '<div class="error-msg">'.$_SESSION['error'].'</div>';
+		echo '<div class="error-msg">'.$_SESSION['error'].'</div><br>';
 		unset($_SESSION['error']);
 	}
 	if (isset($_SESSION['success'])) {
-		echo "<div class='success-msg'>".$_SESSION['success']."</div>";
+		echo "<div class='success-msg'>".$_SESSION['success']."</div><br>";
 		unset($_SESSION['success']);
 	}
 ?>

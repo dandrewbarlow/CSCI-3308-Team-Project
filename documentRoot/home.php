@@ -51,6 +51,8 @@
 	</div>
 
 	<br>
+	
+	<?php include('includes/errors.php');?>
 	<div class="center">
 		<p>Welcome <strong><?php echo $_SESSION['username']; ?></strong>! What's on your mind today?</p>
 	</div><br><br>
@@ -121,7 +123,6 @@
 		</div>
 
 	</div>
-	<?php include('includes/errors.php');?>
 	<div class="extra-space-sm"></div>
 
 	<!-- Footer -->

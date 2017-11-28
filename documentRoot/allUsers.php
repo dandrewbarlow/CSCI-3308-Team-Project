@@ -6,7 +6,7 @@
 
 	//make sure user is superuser
 	if($_SESSION['superuser'] != 1){
-		$_SESSION['msg']="You do not have privileges";
+		$_SESSION['error']="You do not have privileges";
 		header('location: ../index.php');
 	}
 
@@ -64,7 +64,7 @@
 	<!-- End header -->
 
 	<?php include('includes/errors.php');?>
-	
+
 	<div class="extra-space-sm"></div>
 	<div class="container description">
 
