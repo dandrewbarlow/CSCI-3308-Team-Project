@@ -61,6 +61,8 @@ include('includes/requireLogin.php');
 			<div class="col-md-2"></div>
 		</div>
 
+		<?php include('includes/errors.php');?>
+
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-8 center">
@@ -145,7 +147,6 @@ include('includes/requireLogin.php');
 
 		<div class="extra-space-sm"></div>
 	</div>
-	<?php include('includes/errors.php');?>
 
 	<!-- Footer -->
 	<!-- <div class="footer">

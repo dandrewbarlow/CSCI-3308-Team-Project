@@ -50,7 +50,8 @@ include('includes/dbconnect.php');
 	<!-- End header -->
 
 	<div class="container description">
-
+		
+		<?php include('includes/errors.php');?>
 		<p>Manage your websites the sever is currently hosting</p><br>
 		<a class="btn btn-primary" href="upload.php">Create a new website</a><br><br><br>
 
@@ -134,10 +135,7 @@ include('includes/dbconnect.php');
 			<!-- End available sites -->
 
 		</div>
-
 	</div>
-	
-	<?php include('includes/errors.php');?>
 
 	<!-- Footer -->
 	<!-- <div class="footer">

@@ -64,7 +64,8 @@
 			<div class="col-md-2"></div>
 		</div>
 
-		<div class="row">
+		<div class="row">	
+		<?php include('includes/errors.php');?>
 			<div class="col-md-2"></div>
 			<div class="col-md-8 center">
 				<form action="includes/website_upload.php" method="post" enctype="multipart/form-data">
@@ -88,8 +89,6 @@
 		<!-- Form -->
 
 	</div>
-
-	<?php include('includes/errors.php');?>
 	<!-- Footer -->
 	<!-- <div class="footer">
 	    <div class="container text-muted center">

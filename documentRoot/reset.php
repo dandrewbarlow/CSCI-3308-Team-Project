@@ -82,8 +82,6 @@
 			</div>
 			<div class="col-md-2"></div>
 		</div>
-	<?php include('includes/errors.php');?>
-
 	</div>
 
 	<!-- Footer -->
