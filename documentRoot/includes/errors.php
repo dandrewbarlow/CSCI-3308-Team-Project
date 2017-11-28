@@ -1,6 +1,6 @@
 <!-- Display errors that any input form has -->
 <?php  if (count($errors) > 0) : ?>
-	<div class="input-group error">
+	<div class="error-msg">
 		<?php foreach ($errors as $error) : ?>
 			<p><?php echo $error ?></p>
 		<?php endforeach ?>
