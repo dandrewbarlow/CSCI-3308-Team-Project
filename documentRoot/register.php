@@ -4,12 +4,6 @@
 	// Check if user is logged in
 	include('includes/requireLogin');
 
-	// Check if user is superuser
-	if($_SESSION['superuser'] != 1){
-		$_SESSION['msg']="You do not have privileges";
-		header('location: ../index.php');
-	}
-
 	// Includes new user registration module
 	include('includes/requireSuperuser.php');
 	include('includes/register_user.php');

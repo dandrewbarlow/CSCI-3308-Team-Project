@@ -33,4 +33,6 @@ delete_files($path);
 $_SESSION['success'] = "User successfully deleted from database. Note that they may still be logged in.";
 
 header('location: ../allUsers.php');
+exit();
+
 ?>
