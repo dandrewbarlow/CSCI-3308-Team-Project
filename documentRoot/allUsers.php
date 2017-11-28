@@ -63,6 +63,8 @@
 	</div>
 	<!-- End header -->
 
+	<?php include('includes/errors.php');?>
+	
 	<div class="extra-space-sm"></div>
 	<div class="container description">
 
@@ -139,6 +141,6 @@
 			});
 		});
 	</script>
-	<?php include('includes/errors.php');?>
+
 	</body>
 </html>

@@ -6,13 +6,13 @@
 	So take caution.
 -->
 <?php
+session_start();
 
 // Variables
 $dbServerName = "localhost";
 $dbUsername = "pi";
 $dbPassword = "";
 $dbName = "piServer";
-$_SESSION['success'] = "";
 
 $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName); // Connect to the database
 

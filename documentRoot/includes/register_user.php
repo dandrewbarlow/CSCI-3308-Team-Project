@@ -71,7 +71,8 @@ if (isset($_POST['register'])) {
 
     // Redirect to home
 	$_SESSION['success'] = "You have created a new user";
-	header('Location: ../allUsers.php');
+    header('Location: ../allUsers.php');
+    exit();
 }
 
 ?>
