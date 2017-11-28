@@ -1,5 +1,6 @@
 <?php
 include('requireLogin.php');
+include('dbconnect.php');
 if(isset($_POST['storage-submit'])){
 	session_start();
 	$username = $_SESSION['username'];
@@ -12,9 +13,11 @@ if(isset($_POST['storage-submit'])){
 		header('location: /storage.php');
 	}
 	if($privacy == 'public'){
+		$is_private=0;
 		$storageDir = $storageDir.'public/';
 	}else{
 		//NEED TO MAKE USER DIR ON USER REGISTRATION
+		$is_private=1;
 		$storageDir = $storageDir.$username.'/';
 	}
 	//If uploading a file:
@@ -30,6 +33,9 @@ if(isset($_POST['storage-submit'])){
 		if(move_uploaded_file($tmpName, $storageDir.$name)){
 
 			//store metadata in mysql
+			$date = date("Y-m-d h:i:s");
+			$sql="INSERT INTO storage (name, user_name, prefix, is_private, stored_on) VALUES ('$name','$username','$storageDir','$is_private','$date')";
+			mysqli_query($conn, $sql);
 		}else{
 			$_SESSION['error'] = $name." file upload unsuccessful. Please try again";
 			header('location: /storage.php');
