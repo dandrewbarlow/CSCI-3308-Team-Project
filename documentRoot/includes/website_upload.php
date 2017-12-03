@@ -127,13 +127,13 @@ if(isset($_POST['upload-website'])) {
 	exec('sudo apache2ctl -k graceful');
 
 	// If we encountered no errors, insert new entry into database
-	if (!(isset($_SESSION['error']))){
-		$date = date("Y-m-d H:i:s");
-		$username = $_SESSION['username'];
-		$sql = "INSERT INTO websites (user_uid, created_on, website_name, is_domain, is_enabled, src_path)
-					VALUES ('$username', '$date', '$siteName', '$isDomain', '$isEnabled', '$srcPath')";
-		mysqli_query($conn, $sql);
-	}
+
+	$date = date("Y-m-d H:i:s");
+	$username = $_SESSION['username'];
+	$sql = "INSERT INTO websites (user_uid, created_on, website_name, is_domain, is_enabled, src_path)
+			VALUES ('$username', '$date', '$siteName', '$isDomain', '$isEnabled', '$srcPath')";
+	mysqli_query($conn, $sql);
+
 
 
 	$_SESSION['success'] = "Website uploaded and enabled";
